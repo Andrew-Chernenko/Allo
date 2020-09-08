@@ -1,23 +1,28 @@
+package Tests;
+import BaseTest.BaseTest;
+import Pages.MainPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ThemeSwitchTest extends MainPage {
+public class ThemeSwitchTest extends BaseTest {
 
-    private String color;
-    private String headerColor;
+
     protected WebElement checkBox;
 
     @Test
     public void checkColor() throws InterruptedException {
-        checkBox = searchCheckBox();
-        headerColor = searchHeader();
+        MainPage page = new MainPage(driver);
+        sleeper.threadSleep(300);
+        String color;
+        String headerColor;
+        headerColor = page.getHeaderColor();
         headerColor = Color.fromString(headerColor).asHex();
         color = headerColor;
-        checkBox.click();
-        Thread.sleep(3000);
-        headerColor = searchHeader();
+        page.checkBoxThemeSwitchClick();
+        sleeper.threadSleep(2500);
+        headerColor = page.getHeaderColor();
         headerColor = Color.fromString(headerColor).asHex();
         Assert.assertNotEquals(color, headerColor);
     }
