@@ -4,10 +4,11 @@ import org.testng.annotations.Test;
 
 public class LanguageSwitchTest extends MainPage {
 
+    private String headerColor;
 
     @Test
     public void checkSwap() throws InterruptedException {
-        searchHeader();
+        headerColor = searchHeader();
         headerColor = Color.fromString(headerColor).asHex();
         if (headerColor.equals("#323232")) {
             swapLanguageNightTheme();
@@ -16,7 +17,5 @@ public class LanguageSwitchTest extends MainPage {
         }
         Thread.sleep(2000);
         Assert.assertNotEquals(driver.getCurrentUrl(), link);
-
-
     }
 }

@@ -1,21 +1,23 @@
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class NavigateToProductTest extends MainPage {
+    private WebElement searchBox;
+
     @Test
     public void moveToRef() throws InterruptedException {
-        searchSearchBox();
+        searchBox = searchSearchBox();
         searchBox.sendKeys("Холодильник" + Keys.ENTER);
         Thread.sleep(4000);
         setRefrigerator();
         Assert.assertEquals(driver.getCurrentUrl(), "https://allo.ua/ua/holodilniki/mijia-bcd-160mdmj01.html");
-
     }
 
     @Test
     public void moveToIph() throws InterruptedException {
-        searchSearchBox();
+        searchBox = searchSearchBox();
         searchBox.sendKeys("Айфон" + Keys.ENTER);
         Thread.sleep(5000);
         setIphoneForNavigate();

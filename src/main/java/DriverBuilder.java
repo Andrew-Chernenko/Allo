@@ -16,8 +16,13 @@ public class DriverBuilder {
         options.addArguments("--disable-notifications");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        driver.navigate().to(link);
+
         Thread.sleep(3000);
+    }
+
+    @BeforeMethod
+    protected void navigateToLink(){
+        driver.navigate().to(link);
     }
 
 

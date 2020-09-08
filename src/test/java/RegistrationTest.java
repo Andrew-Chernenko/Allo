@@ -1,21 +1,28 @@
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class RegistrationTest extends MainPage {
 
+    private WebElement inputRegisterName;
+    private WebElement inputRegisterPhone;
+    private WebElement inputRegisterEmail;
+    private WebElement inputRegisterPassword;
+    private WebElement succesRegisterBtn;
+
     @Test
     public void registerCheck() throws InterruptedException {
         setRegisterClick();
         Thread.sleep(2000);
-        setInputRegisterName();
+        inputRegisterName = setInputRegisterName();
         inputRegisterName.sendKeys("Андрей");
-        setInputRegisterPhone();
+        inputRegisterPhone = setInputRegisterPhone();
         inputRegisterPhone.sendKeys("956765444");
-        setInputRegisterEmail();
+        inputRegisterEmail = setInputRegisterEmail();
         inputRegisterEmail.sendKeys("test12345612355@gmail.com");
-        setInputRegisterPassword();
+        inputRegisterPassword = setInputRegisterPassword();
         inputRegisterPassword.sendKeys("qwerty12345");
-        setSuccesRegisterBtn();
+        succesRegisterBtn = setSuccesRegisterBtn();
         Assert.assertTrue(succesRegisterBtn.isEnabled());
     }
 }
