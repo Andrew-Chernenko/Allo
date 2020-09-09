@@ -7,14 +7,13 @@ import utils.SleeperUtils;
 
 public class PasswordRecoveryTest extends BaseTest {
 
-
     @Test
     public void passwordRecovery() throws InterruptedException {
         MainPage page = new MainPage(driver);
         SleeperUtils.threadSleep(1);
-        page.setLoginClick();
+        page.loginClickBtn();
         page.btnRecoveryPasswordClick();
         page.setInputRecoveryPassword("test@gmail.com");
-        Assert.assertTrue(page.checkBtnSendCodeRecoveryPassword());
+        Assert.assertTrue(page.isCheckBtnSendCodeRecoveryPassword());
     }
 }

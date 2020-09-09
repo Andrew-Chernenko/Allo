@@ -7,17 +7,14 @@ import utils.SleeperUtils;
 
 public class AddProductToCartTest extends BaseTest {
 
-
     @Test
     public void checkAddProduct() throws InterruptedException {
         MainPage page = new MainPage(driver);
-        String oldCardValue;
-        String newCartValue;
-        oldCardValue = page.takeCartValue();
+        String oldCardValue = page.takeCartValue();
         page.doSearch("Телефон");
-        page.setTelephone();
+        page.telephoneBtnClick();
         SleeperUtils.threadSleep(4);
-        newCartValue = page.takeCartValue();
+        String newCartValue = page.takeCartValue();
         Assert.assertNotEquals(oldCardValue, newCartValue);
     }
 }

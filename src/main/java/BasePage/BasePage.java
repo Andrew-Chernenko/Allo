@@ -10,7 +10,7 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        typeTextUtils = new TypeTextUtils(driver);
+        typeTextUtils = new TypeTextUtils();
         PageFactory.initElements(driver, this);
     }
 

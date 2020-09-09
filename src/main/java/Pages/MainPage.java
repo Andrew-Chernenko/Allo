@@ -3,14 +3,14 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import BasePage.BasePage;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 import utils.SleeperUtils;
-
 
 public class MainPage extends BasePage {
 
     @FindBy(className = "shopping-cart__count")
-    private WebElement Cart;
+    private WebElement cart;
 
     @FindBy(name = "search")
     private WebElement searchBox;
@@ -104,35 +104,38 @@ public class MainPage extends BasePage {
     }
 
     public String takeCartValue() {
-        return Cart.getText();
+        return cart.getText();
     }
 
-    public void setTelephone() throws InterruptedException {
+    public void telephoneBtnClick() throws InterruptedException {
         telephone.click();
         SleeperUtils.threadSleep(4);
     }
 
     public String getHeaderColor() {
-        return header.getCssValue("background-color");
+        String headerColor;
+        headerColor = header.getCssValue("background-color");
+        return Color.fromString(headerColor).asHex();
     }
-    public void swapLanguageNightTheme() {
+
+    public void swapLanguageNightThemeClick() {
         nightThemeSwitcher.click();
     }
 
-    public void swapLanguageDayTheme() {
+    public void swapLanguageDayThemeClick() {
         dayThemeSwitch.click();
     }
 
-    public void setLoginClick() throws InterruptedException {
+    public void loginClickBtn() throws InterruptedException {
         loginBtn.click();
         SleeperUtils.threadSleep(1);
     }
 
-    public void setRefrigeratorBtnClick() {
+    public void refrigeratorBtnClick() {
         refrigeratorBuyBtn.click();
     }
 
-    public void setIphoneBtnClick() {
+    public void iphoneBtnClick() {
         iphoneBuyBtn.click();
     }
 
@@ -179,12 +182,15 @@ public class MainPage extends BasePage {
     public void setFieldLogin(String text){
         typeTextUtils.sendText(fieldLogin,text);
     }
+
     public void setFieldPassword(String text){
         typeTextUtils.sendText(fieldPassword,text);
     }
-    public boolean checkBtnSuccesLogin(){
+
+    public boolean isCheckBtnSuccesLogin(){
         return btnSuccesLogin.isEnabled();
     }
+
     public void setFieldNameOnOrdering(String text) throws InterruptedException {
         typeTextUtils.sendText(fieldName,text);
         SleeperUtils.threadSleep(1);
@@ -197,16 +203,18 @@ public class MainPage extends BasePage {
         typeTextUtils.sendText(fieldEmail,text);
         SleeperUtils.threadSleep(1);
     }
-    public boolean checkBtnCheckOut(){
+    public boolean isCheckBtnCheckOut(){
         return btnCheckOut.isEnabled();
     }
+
     public void setInputRecoveryPassword(String text) throws InterruptedException {
         typeTextUtils.sendText(inputRecoveryPassword,text);
         SleeperUtils.threadSleep(1);
     }
-    public boolean checkBtnSendCodeRecoveryPassword(){
+    public boolean isCheckBtnSendCodeRecoveryPassword(){
         return btnSendCodeRecoveryPassword.isEnabled();
     }
+
     public void setInputRegisterName(String text) throws InterruptedException {
         typeTextUtils.sendText(inputRegisterName,text);
         SleeperUtils.threadSleep(1);
@@ -223,7 +231,7 @@ public class MainPage extends BasePage {
         typeTextUtils.sendText(inputRegisterPassword,text);
         SleeperUtils.threadSleep(1);
     }
-    public boolean checkSuccesRegisterBtn(){
+    public boolean isCheckSuccesRegisterBtn(){
         return succesRegisterBtn.isEnabled();
     }
 }

@@ -7,7 +7,6 @@ import utils.SleeperUtils;
 
 public class SearchProductTest extends BaseTest {
 
-
     @Test
     public void searchGoodsEng() throws InterruptedException {
         MainPage page = new MainPage(driver);
@@ -15,7 +14,6 @@ public class SearchProductTest extends BaseTest {
         page.doSearch("Apple");
         Assert.assertEquals(driver.getCurrentUrl(), "https://allo.ua/ua/apple-store/");
     }
-
 
     @Test
     public void searchGoodsRus() throws InterruptedException {

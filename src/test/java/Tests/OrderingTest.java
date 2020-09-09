@@ -9,17 +9,16 @@ public class OrderingTest extends BaseTest {
 
     @Test
     public void orderingPurchase() throws InterruptedException {
-
         MainPage page = new MainPage(driver);
         SleeperUtils.threadSleep(1);
         page.doSearch("Айфон");
-        page.setTelephone();
+        page.telephoneBtnClick();
         SleeperUtils.threadSleep(4);
         page.orderBtnClick();
         page.setFieldNameOnOrdering("Андрей");
         page.setFieldTelephoneOnOrdering("994567634");
         page.setFieldEmailOnOrdering("test@gmail.com");
-        Assert.assertTrue(page.checkBtnCheckOut());
+        Assert.assertTrue(page.isCheckBtnCheckOut());
     }
 
     @Test
@@ -29,6 +28,6 @@ public class OrderingTest extends BaseTest {
         page.doSearch("Микроволновка");
         page.microwaveBtnClick();
         page.orderBtnClick();
-        Assert.assertFalse(page.checkBtnCheckOut());
+        Assert.assertFalse(page.isCheckBtnCheckOut());
     }
 }

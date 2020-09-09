@@ -7,7 +7,6 @@ import utils.SleeperUtils;
 
 public class SwitchCategoryTest extends BaseTest {
 
-
     @Test
     public void checkCategoryFirst() throws InterruptedException {
         MainPage page = new MainPage(driver);

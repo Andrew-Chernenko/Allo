@@ -7,7 +7,6 @@ import utils.SleeperUtils;
 
 public class RegistrationTest extends BaseTest {
 
-
     @Test
     public void registerCheck() throws InterruptedException {
         MainPage page = new MainPage(driver);
@@ -16,6 +15,6 @@ public class RegistrationTest extends BaseTest {
         page.setInputRegisterName("Андрей");
         page.setInputRegisterPhone("956765444");
         page.setInputRegisterEmail("test12345612355@gmail.com");
-        Assert.assertTrue(page.checkSuccesRegisterBtn());
+        Assert.assertTrue(page.isCheckSuccesRegisterBtn());
     }
 }
