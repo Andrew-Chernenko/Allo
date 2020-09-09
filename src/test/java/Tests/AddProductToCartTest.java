@@ -1,10 +1,9 @@
 package Tests;
-
 import BaseTest.BaseTest;
-import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import Pages.MainPage;
+import utils.SleeperUtils;
 
 public class AddProductToCartTest extends BaseTest {
 
@@ -15,10 +14,9 @@ public class AddProductToCartTest extends BaseTest {
         String oldCardValue;
         String newCartValue;
         oldCardValue = page.takeCartValue();
-        page.searchBox.sendKeys("Телефон" + Keys.ENTER);
-        sleeper.threadSleep(4000);
+        page.doSearch("Телефон");
         page.setTelephone();
-        sleeper.threadSleep(4000);
+        SleeperUtils.threadSleep(4);
         newCartValue = page.takeCartValue();
         Assert.assertNotEquals(oldCardValue, newCartValue);
     }
