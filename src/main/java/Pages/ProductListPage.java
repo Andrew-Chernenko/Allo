@@ -8,18 +8,18 @@ import java.util.List;
 
 public class ProductListPage extends BasePage {
 
-    @FindBy(xpath = "//div[@class='product-card__content']//button")
-    private List<WebElement> product;
+    @FindBy(xpath = ".//button[contains(@class,'buy-button--animation') and not (contains(@class, 'out-stock'))]")
+    private List<WebElement> productBuyBtn;
 
     public ProductListPage(WebDriver driver) {
         super(driver);
     }
 
     public void buyProductBtnClick(int element) throws InterruptedException {
-        System.out.println(product.size());
-        if (element <= 27 && element >= 0) {
+        if (element < productBuyBtn.size() && element >= 0) {
+            System.out.println(productBuyBtn.size());
             SleeperUtils.threadSleep(1);
-            product.get(element).click();
+            productBuyBtn.get(element).click();
             SleeperUtils.threadSleep(4);
         }
     }

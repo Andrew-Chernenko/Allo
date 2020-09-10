@@ -15,6 +15,7 @@ public class RegistrationTest extends BaseTest {
         page.setInputRegisterName("Андрей");
         page.setInputRegisterPhone("956765444");
         page.setInputRegisterEmail("test12345612355@gmail.com");
+        page.setInputRegisterPassword("qwerty12345");
         Assert.assertTrue(page.isCheckSuccesRegisterBtn());
     }
 }

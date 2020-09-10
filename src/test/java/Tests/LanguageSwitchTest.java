@@ -11,12 +11,7 @@ public class LanguageSwitchTest extends BaseTest {
     public void checkSwap() throws InterruptedException {
         MainPage page = new MainPage(driver);
         SleeperUtils.threadSleep(1);
-        String headerColor = page.getHeaderColor();
-        if (headerColor.equals("#323232")) {
-            page.swapLanguageNightThemeClick();
-        } else {
-            page.swapLanguageDayThemeClick();
-        }
+        page.swapLanguageThemeClick();
         SleeperUtils.threadSleep(2);
         Assert.assertNotEquals(driver.getCurrentUrl(), BaseTest.link);
     }
