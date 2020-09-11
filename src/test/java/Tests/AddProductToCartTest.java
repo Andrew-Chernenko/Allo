@@ -11,9 +11,9 @@ public class AddProductToCartTest extends BaseTest {
     @Test
     public void checkAddProduct() throws InterruptedException {
         MainPage page = new MainPage(driver);
-        ProductListPage productListPage = new ProductListPage(driver);
         String oldCardValue = page.takeCartValue();
         page.doSearch("Телефон");
+        ProductListPage productListPage = new ProductListPage(driver);
         productListPage.buyProductBtnClick(3);
         SleeperUtils.threadSleep(4);
         String newCartValue = page.takeCartValue();

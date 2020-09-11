@@ -11,9 +11,9 @@ public class OrderingTest extends BaseTest {
     @Test
     public void orderingPurchase() throws InterruptedException {
         MainPage page = new MainPage(driver);
-        ProductListPage productListPage = new ProductListPage(driver);
         SleeperUtils.threadSleep(1);
         page.doSearch("Айфон");
+        ProductListPage productListPage = new ProductListPage(driver);
         productListPage.buyProductBtnClick(3);
         SleeperUtils.threadSleep(4);
         page.orderBtnClick();
@@ -26,9 +26,9 @@ public class OrderingTest extends BaseTest {
     @Test
     public void orderingPurchaseFalse() throws InterruptedException {
         MainPage page = new MainPage(driver);
-        ProductListPage productListPage = new ProductListPage(driver);
         SleeperUtils.threadSleep(1);
         page.doSearch("Микроволновка");
+        ProductListPage productListPage = new ProductListPage(driver);
         productListPage.buyProductBtnClick(2);
         page.orderBtnClick();
         Assert.assertFalse(page.isCheckBtnCheckOut());

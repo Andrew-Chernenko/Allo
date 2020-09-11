@@ -11,9 +11,9 @@ public class NavigateToProductTest extends BaseTest {
     @Test
     public void moveToRef() throws InterruptedException {
         MainPage page = new MainPage(driver);
-        ProductListPage productListPage = new ProductListPage(driver);
         SleeperUtils.threadSleep(1);
         page.doSearch("Холодильник");
+        ProductListPage productListPage = new ProductListPage(driver);
         productListPage.buyProductBtnClick(2);
         Assert.assertEquals(driver.getCurrentUrl(), "https://allo.ua/ua/holodilniki/viomi-301l-bcd-301wmsaym.html");
     }
@@ -21,9 +21,9 @@ public class NavigateToProductTest extends BaseTest {
     @Test
     public void moveToIph() throws InterruptedException {
         MainPage page = new MainPage(driver);
-        ProductListPage productListPage = new ProductListPage(driver);
         SleeperUtils.threadSleep(1);
         page.doSearch("Айфон");
+        ProductListPage productListPage = new ProductListPage(driver);
         productListPage.buyProductBtnClick(1);
         Assert.assertEquals(driver.getCurrentUrl(), "https://allo.ua/ua/products/mobile/apple-iphone-11-pro-max-256gb-midnight-green.html");
     }
