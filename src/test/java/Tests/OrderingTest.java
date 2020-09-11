@@ -14,7 +14,7 @@ public class OrderingTest extends BaseTest {
         SleeperUtils.threadSleep(1);
         page.doSearch("Айфон");
         ProductListPage productListPage = new ProductListPage(driver);
-        productListPage.buyProductBtnClick(3);
+        productListPage.productBtnClick("MWM02");
         SleeperUtils.threadSleep(4);
         page.orderBtnClick();
         page.setFieldNameOnOrdering("Андрей");
@@ -24,12 +24,12 @@ public class OrderingTest extends BaseTest {
     }
 
     @Test
-    public void orderingPurchaseFalse() throws InterruptedException {
+    public void orderingPurchaseIncorrectData() throws InterruptedException {
         MainPage page = new MainPage(driver);
         SleeperUtils.threadSleep(1);
         page.doSearch("Микроволновка");
         ProductListPage productListPage = new ProductListPage(driver);
-        productListPage.buyProductBtnClick(2);
+        productListPage.productBtnClick("MWBLXE1ACM");
         page.orderBtnClick();
         Assert.assertFalse(page.isCheckBtnCheckOut());
     }

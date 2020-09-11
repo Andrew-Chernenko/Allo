@@ -14,7 +14,7 @@ public class AddProductToCartTest extends BaseTest {
         String oldCardValue = page.takeCartValue();
         page.doSearch("Телефон");
         ProductListPage productListPage = new ProductListPage(driver);
-        productListPage.buyProductBtnClick(3);
+        productListPage.productBtnClick("SM-N985FZNGSEK");
         SleeperUtils.threadSleep(4);
         String newCartValue = page.takeCartValue();
         Assert.assertNotEquals(oldCardValue, newCartValue);

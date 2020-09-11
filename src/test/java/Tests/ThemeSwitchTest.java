@@ -8,7 +8,7 @@ import utils.SleeperUtils;
 public class ThemeSwitchTest extends BaseTest {
 
     @Test
-    public void checkColor() throws InterruptedException {
+    public void checkThemeColor() throws InterruptedException {
         MainPage page = new MainPage(driver);
         String headerColor;
         SleeperUtils.threadSleep(1);

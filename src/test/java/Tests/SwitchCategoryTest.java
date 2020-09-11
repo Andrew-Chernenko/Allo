@@ -22,5 +22,4 @@ public class SwitchCategoryTest extends BaseTest {
         page.secondCategoryClick();
         Assert.assertEquals(driver.getCurrentUrl(), "https://allo.ua/ua/bytovaya-tehnika/");
     }
-
 }

@@ -8,7 +8,7 @@ import utils.SleeperUtils;
 public class SearchProductTest extends BaseTest {
 
     @Test
-    public void searchGoodsEng() throws InterruptedException {
+    public void searchProductEngLanguage() throws InterruptedException {
         MainPage page = new MainPage(driver);
         SleeperUtils.threadSleep(1);
         page.doSearch("Apple");
@@ -16,7 +16,7 @@ public class SearchProductTest extends BaseTest {
     }
 
     @Test
-    public void searchGoodsRus() throws InterruptedException {
+    public void searchProductRusLanguage() throws InterruptedException {
         MainPage page = new MainPage(driver);
         SleeperUtils.threadSleep(1);
         page.doSearch("Айфон");

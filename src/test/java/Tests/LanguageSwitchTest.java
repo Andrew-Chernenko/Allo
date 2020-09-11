@@ -8,7 +8,7 @@ import utils.SleeperUtils;
 public class LanguageSwitchTest extends BaseTest {
 
     @Test
-    public void checkSwap() throws InterruptedException {
+    public void checkSwapLanguage() throws InterruptedException {
         MainPage page = new MainPage(driver);
         SleeperUtils.threadSleep(1);
         page.swapLanguageThemeClick();
