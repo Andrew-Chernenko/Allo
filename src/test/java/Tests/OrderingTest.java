@@ -1,6 +1,7 @@
 package Tests;
 import BaseTest.BaseTest;
 import Pages.MainPage;
+import Pages.ProductListPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.SleeperUtils;
@@ -12,7 +13,8 @@ public class OrderingTest extends BaseTest {
         MainPage page = new MainPage(driver);
         SleeperUtils.threadSleep(1);
         page.doSearch("Айфон");
-        page.telephoneBtnClick();
+        ProductListPage productListPage = new ProductListPage(driver);
+        productListPage.buyProductBtnClick(3);
         SleeperUtils.threadSleep(4);
         page.orderBtnClick();
         page.setFieldNameOnOrdering("Андрей");
@@ -26,7 +28,8 @@ public class OrderingTest extends BaseTest {
         MainPage page = new MainPage(driver);
         SleeperUtils.threadSleep(1);
         page.doSearch("Микроволновка");
-        page.microwaveBtnClick();
+        ProductListPage productListPage = new ProductListPage(driver);
+        productListPage.buyProductBtnClick(2);
         page.orderBtnClick();
         Assert.assertFalse(page.isCheckBtnCheckOut());
     }

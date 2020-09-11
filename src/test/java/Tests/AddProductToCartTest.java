@@ -1,5 +1,6 @@
 package Tests;
 import BaseTest.BaseTest;
+import Pages.ProductListPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import Pages.MainPage;
@@ -12,7 +13,8 @@ public class AddProductToCartTest extends BaseTest {
         MainPage page = new MainPage(driver);
         String oldCardValue = page.takeCartValue();
         page.doSearch("Телефон");
-        page.telephoneBtnClick();
+        ProductListPage productListPage = new ProductListPage(driver);
+        productListPage.buyProductBtnClick(3);
         SleeperUtils.threadSleep(4);
         String newCartValue = page.takeCartValue();
         Assert.assertNotEquals(oldCardValue, newCartValue);
