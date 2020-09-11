@@ -14,7 +14,6 @@ public class AddProductToCartTest extends BaseTest {
         ProductListPage productListPage = new ProductListPage(driver);
         String oldCardValue = page.takeCartValue();
         page.doSearch("Телефон");
-//        page.doSearch("Iphone 8 256gb");
         productListPage.buyProductBtnClick(3);
         SleeperUtils.threadSleep(4);
         String newCartValue = page.takeCartValue();
