@@ -5,9 +5,11 @@ import org.openqa.selenium.WebElement;
 import BasePage.BasePage;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
-import utils.SleeperUtils;
 
 public class MainPage extends BasePage {
+
+    @FindBy(xpath = ".//div[contains(@class,'product-card v-loaded')]")
+    private WebElement productCart;
 
     @FindBy(xpath = ".//span[@class='shopping-cart__count']")
     private WebElement cart;
@@ -21,7 +23,7 @@ public class MainPage extends BasePage {
     @FindBy(xpath = ".//div[@class='language']//div[@class='switcher-toggle']")
     private WebElement languageSwitch;
 
-    @FindBy(xpath = ".//button[@class='authentication__button--login']")
+    @FindBy(xpath = ".//div[@class='user-block-authentication']//*[local-name()='svg']")
     private WebElement loginBtn;
 
     @FindBy(xpath = ".//input[@id='auth']")
@@ -57,7 +59,7 @@ public class MainPage extends BasePage {
     @FindBy(xpath = ".//input[@id='auth']")
     private WebElement inputRecoveryPassword;
 
-    @FindBy(xpath = ".//button[@class='authentication__button--register']")
+    @FindBy(xpath = ".//li[@class='login-tab']")
     private WebElement btnRegister;
 
     @FindBy(xpath = ".//input[@id='v-register-name']")
@@ -78,11 +80,17 @@ public class MainPage extends BasePage {
     @FindBy(xpath = ".//p[contains(text(),'Смартфоны и телефоны') or contains( text(), 'Смартфони та телефони')]")
     private WebElement firstCategory;
 
-    @FindBy(xpath = ".//p[contains(text(),'Побутова техніка') or contains( text(),'Бытовая техника'])")
+    @FindBy(xpath = ".//p[contains(text(),'Бытовая техника') or contains( text(), 'Побутова техніка')]")
     private WebElement secondCategory;
 
     @FindBy(xpath = ".//div[@class='header-theme']//div[@class='switcher-toggle']")
     private WebElement checkBoxThemeSwitch;
+
+    @FindBy(xpath = "//div[@id='customer-login-menu']")
+    private WebElement loginMenu;
+
+    @FindBy(xpath = "//form[@id='form-validate-register']")
+    private WebElement registerMenu;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -94,54 +102,63 @@ public class MainPage extends BasePage {
 
     public String getHeaderColor() {
         String headerColor;
+        waitUtils.waitLoadingPage(7);
         headerColor = header.getCssValue("background-color");
         return Color.fromString(headerColor).asHex();
     }
 
-    public void swapLanguageThemeClick() throws InterruptedException {
+    public void swapLanguageThemeClick() {
+        waitUtils.waitElementClickableWithMiddleWait(languageSwitch);
         languageSwitch.click();
-        SleeperUtils.threadSleep(1);
+        waitUtils.waitLoadingPage(3);
     }
 
-    public void loginClickBtn() throws InterruptedException {
+    public void loginClickBtn() {
+        waitUtils.waitElementClickableWithMiddleWait(loginBtn);
         loginBtn.click();
-        SleeperUtils.threadSleep(1);
+        waitUtils.waitElementClickableWithMiddleWait(loginMenu);
     }
 
-    public void orderBtnClick() throws InterruptedException {
+    public void orderBtnClick() {
+        waitUtils.waitElementClickableWithMiddleWait(btnOrdering);
         btnOrdering.click();
-        SleeperUtils.threadSleep(4);
     }
 
-    public void btnRecoveryPasswordClick() throws InterruptedException {
+    public void btnRecoveryPasswordClick() {
         btnRecoveryPassword.click();
-        SleeperUtils.threadSleep(2);
+        waitUtils.waitElementClickableWithMiddleWait(loginMenu);
     }
 
-    public void registerBtnClick() throws InterruptedException {
+    public void registerBtnClick() {
+        waitUtils.waitElementClickableWithMiddleWait(loginBtn);
+        loginBtn.click();
+        waitUtils.waitElementClickableWithMiddleWait(btnRegister);
         btnRegister.click();
-        SleeperUtils.threadSleep(2);
+        waitUtils.waitElementClickableWithMiddleWait(registerMenu);
     }
 
-    public void firstCategoryClick() throws InterruptedException {
+    public void firstCategoryClick() {
+        waitUtils.waitLoadingPage(7);
         firstCategory.click();
-        SleeperUtils.threadSleep(3);
+        waitUtils.waitLoadingPage(7);
     }
 
-    public void secondCategoryClick() throws InterruptedException {
+    public void secondCategoryClick() {
+        waitUtils.waitLoadingPage(7);
         secondCategory.click();
-        SleeperUtils.threadSleep(3);
+        waitUtils.waitLoadingPage(7);
     }
 
-    public void checkBoxThemeSwitchClick() throws InterruptedException {
+    public void checkBoxThemeSwitchClick() {
         checkBoxThemeSwitch.click();
-        SleeperUtils.threadSleep(3);
+        waitUtils.waitLoadingPage(7);
     }
 
-    public void doSearch(String text) throws InterruptedException {
+    public void doSearch(String text) {
+        waitUtils.waitElementClickableWithMiddleWait(searchBox);
         typeTextUtils.sendText(searchBox,text);
         typeTextUtils.pushKeys(searchBox,Keys.ENTER);
-        SleeperUtils.threadSleep(5);
+        waitUtils.waitElementClickableWithMaximumWait(productCart);
     }
 
     public void setFieldLogin(String text){
@@ -156,52 +173,48 @@ public class MainPage extends BasePage {
         return btnSuccesLogin.isEnabled();
     }
 
-    public void setFieldNameOnOrdering(String text) throws InterruptedException {
+    public void setFieldNameOnOrdering(String text) {
+        waitUtils.waitElementClickableWithMiddleWait(fieldName);
         typeTextUtils.sendText(fieldName,text);
-        SleeperUtils.threadSleep(1);
     }
 
-    public void setFieldTelephoneOnOrdering(String text) throws InterruptedException {
+    public void setFieldTelephoneOnOrdering(String text) {
+        waitUtils.waitElementClickableWithMiddleWait(fieldTelephone);
         typeTextUtils.sendText(fieldTelephone,text);
-        SleeperUtils.threadSleep(1);
     }
 
-    public void setFieldEmailOnOrdering(String text) throws InterruptedException {
+    public void setFieldEmailOnOrdering(String text) {
+        waitUtils.waitElementClickableWithMiddleWait(fieldEmail);
         typeTextUtils.sendText(fieldEmail,text);
-        SleeperUtils.threadSleep(1);
     }
 
     public boolean isCheckBtnCheckOut(){
+        waitUtils.waitElementClickableWithMiddleWait(btnCheckOut);
         return btnCheckOut.isEnabled();
     }
 
-    public void setInputRecoveryPassword(String text) throws InterruptedException {
+    public void setInputRecoveryPassword(String text) {
         typeTextUtils.sendText(inputRecoveryPassword,text);
-        SleeperUtils.threadSleep(1);
     }
 
     public boolean isCheckBtnSendCodeRecoveryPassword(){
         return btnSendCodeRecoveryPassword.isEnabled();
     }
 
-    public void setInputRegisterName(String text) throws InterruptedException {
+    public void setInputRegisterName(String text) {
         typeTextUtils.sendText(inputRegisterName,text);
-        SleeperUtils.threadSleep(1);
     }
 
-    public void setInputRegisterPhone(String text) throws InterruptedException {
+    public void setInputRegisterPhone(String text) {
         typeTextUtils.sendText(inputRegisterPhone,text);
-        SleeperUtils.threadSleep(1);
     }
 
-    public void setInputRegisterEmail(String text) throws InterruptedException {
+    public void setInputRegisterEmail(String text) {
         typeTextUtils.sendText(inputRegisterEmail,text);
-        SleeperUtils.threadSleep(1);
     }
 
-    public void setInputRegisterPassword(String text) throws InterruptedException {
+    public void setInputRegisterPassword(String text) {
         typeTextUtils.sendText(inputRegisterPassword,text);
-        SleeperUtils.threadSleep(1);
     }
 
     public boolean isCheckSuccesRegisterBtn(){

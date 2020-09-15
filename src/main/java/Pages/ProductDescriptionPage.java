@@ -13,7 +13,7 @@ public class ProductDescriptionPage extends BasePage {
         super(driver);
     }
 
-    public boolean isContainsProductName(String text) throws InterruptedException {
+    public boolean isContainsProductName(String text) {
         return productName.getText().contains(text);
     }
 }

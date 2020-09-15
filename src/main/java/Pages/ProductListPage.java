@@ -11,6 +11,9 @@ public class ProductListPage extends BasePage {
     @FindBy(xpath = ".//div[contains(@class,'product-card v-loaded')]")
     private List<WebElement> productCart;
 
+    @FindBy(xpath = ".//div[@class='cart-popup__body']")
+    private WebElement productCartPopUp;
+
     public ProductListPage(WebDriver driver) {
         super(driver);
     }
@@ -19,12 +22,14 @@ public class ProductListPage extends BasePage {
         for (WebElement webElement : productCart) {
             if (webElement.getText().contains(text)) {
                 webElement.findElement(By.xpath(".//button[contains(@class,'buy-button--animation')]")).click();
+                waitUtils.waitElementClickableWithMaximumWait(productCartPopUp);
                 break;
             }
         }
     }
 
     public void navigateToProductDescriptionPage(String element) {
+        waitUtils.waitLoadingPage(5);
         for (WebElement webElement : productCart) {
             if (webElement.getText().contains(element)) {
                 webElement.click();

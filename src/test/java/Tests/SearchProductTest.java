@@ -3,23 +3,20 @@ import BaseTest.BaseTest;
 import Pages.MainPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.SleeperUtils;
 
 public class SearchProductTest extends BaseTest {
 
     @Test
-    public void searchProductEngLanguage() throws InterruptedException {
+    public void searchProductEngLanguage() {
         MainPage page = new MainPage(driver);
-        SleeperUtils.threadSleep(1);
-        page.doSearch("Apple");
-        Assert.assertEquals(driver.getCurrentUrl(), "https://allo.ua/ua/apple-store/");
+        page.doSearch("Vacuum cleaner");
+        Assert.assertEquals(driver.getCurrentUrl(), "https://allo.ua/ua/catalogsearch/result/?q=Vacuum%20cleaner");
     }
 
     @Test
-    public void searchProductRusLanguage() throws InterruptedException {
+    public void searchProductRusLanguage() {
         MainPage page = new MainPage(driver);
-        SleeperUtils.threadSleep(1);
         page.doSearch("Айфон");
-        Assert.assertEquals(driver.getCurrentUrl(), "https://allo.ua/ua/products/mobile/proizvoditel-apple/");
+        Assert.assertEquals(driver.getCurrentUrl(), "https://allo.ua/ua/catalogsearch/result/?q=iphone");
     }
 }
