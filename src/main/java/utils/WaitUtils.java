@@ -19,6 +19,24 @@ public class WaitUtils {
         this.driver = driver;
     }
 
+    public WebElement waitInVisibleElement(WebElement element,int timeout){
+        Boolean wait = (new WebDriverWait(driver,timeout))
+                .until(ExpectedConditions.invisibilityOf(element));
+        return element;
+    }
+
+    public WebElement waitInVisibleElementMinimumWait(WebElement element){
+        return waitElementVisibility(element,MINIMUMLIMIT);
+    }
+
+    public WebElement waitInVisibleElementMiddleWait(WebElement element){
+        return waitElementVisibility(element,MIDDLELIMIT);
+    }
+
+    public WebElement waitInVisibleElementMaximumWait(WebElement element){
+        return waitElementVisibility(element,MAXIMUMLIMIT);
+    }
+
     public List<WebElement> waitVisibilityAllElements(List<WebElement> webElements, int timeout){
         List<WebElement> wait = (new WebDriverWait(driver,timeout))
                 .until(ExpectedConditions.visibilityOfAllElements(webElements));
@@ -44,15 +62,15 @@ public class WaitUtils {
         return element;
     }
 
-    public WebElement waitElementClickableWithMinimumWait(WebElement element){
+    public WebElement waitElementWithMinimumWaitAndClick(WebElement element){
         return waitElementClickable(element,MINIMUMLIMIT);
     }
 
-    public WebElement waitElementClickableWithMiddleWait(WebElement element){
+    public WebElement waitElementWithMiddleWaitAndClick(WebElement element){
         return waitElementClickable(element,MIDDLELIMIT);
     }
 
-    public WebElement waitElementClickableWithMaximumWait(WebElement element){
+    public WebElement waitElementWithMaximumWaitAndClick(WebElement element){
         return waitElementClickable(element,MAXIMUMLIMIT);
     }
 
@@ -74,7 +92,7 @@ public class WaitUtils {
         return waitElementVisibility(element,MAXIMUMLIMIT);
     }
 
-    public void waitLoadingPage(int timeout){
+    public void waitLoadingPageWithJavaScript(int timeout){
         Wait<WebDriver> wait = new WebDriverWait(driver,timeout);
         wait.until(new Function<WebDriver, Boolean>() {
             public Boolean apply (WebDriver driver){

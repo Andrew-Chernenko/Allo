@@ -12,7 +12,7 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        typeTextUtils = new TypeTextUtils();
+        typeTextUtils = new TypeTextUtils(driver);
         waitUtils = new WaitUtils(driver);
         PageFactory.initElements(driver, this);
     }

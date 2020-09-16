@@ -99,59 +99,57 @@ public class MainPage extends BasePage {
     }
 
     public String takeCartValue() {
-        return cart.getText();
+        return waitUtils.waitElementVisibilityWithMinimumWait(cart).getText();
     }
 
     public String getHeaderColor() {
         String headerColor;
-        waitUtils.waitLoadingPage(7);
+        waitUtils.waitLoadingPageWithJavaScript(7);
         headerColor = header.getCssValue("background-color");
         return Color.fromString(headerColor).asHex();
     }
 
     public void swapLanguageClick() {
-        waitUtils.waitElementClickableWithMiddleWait(languageSwitch);
-        waitUtils.waitLoadingPage(3);
+        waitUtils.waitElementWithMiddleWaitAndClick(languageSwitch);
+        waitUtils.waitLoadingPageWithJavaScript(3);
     }
 
     public void loginClickBtn() {
-        waitUtils.waitElementClickableWithMiddleWait(loginBtn);
+        waitUtils.waitElementWithMiddleWaitAndClick(loginBtn);
         waitUtils.waitElementVisibilityWithMiddleWait(loginMenu);
     }
 
     public void orderBtnClick() {
-        waitUtils.waitElementClickableWithMiddleWait(btnOrdering);
+        waitUtils.waitElementWithMiddleWaitAndClick(btnOrdering);
     }
 
     public void btnRecoveryPasswordClick() {
-        btnRecoveryPassword.click();
+        waitUtils.waitElementWithMinimumWaitAndClick(btnRecoveryPassword);
     }
 
     public void registerBtnClick() {
-        waitUtils.waitElementVisibilityWithMiddleWait(loginBtn);
-        loginBtn.click();
-        waitUtils.waitElementVisibilityWithMiddleWait(btnRegister);
-        btnRegister.click();
+        waitUtils.waitElementWithMiddleWaitAndClick(loginBtn);
+        waitUtils.waitElementWithMiddleWaitAndClick(btnRegister);
         waitUtils.waitElementVisibilityWithMiddleWait(registerMenu);
     }
 
     public void firstCategoryClick() {
-        waitUtils.waitElementClickableWithMiddleWait(firstCategory);
-        waitUtils.waitLoadingPage(7);
+        waitUtils.waitElementWithMiddleWaitAndClick(firstCategory);
+        waitUtils.waitLoadingPageWithJavaScript(7);
     }
 
     public void secondCategoryClick() {
-        waitUtils.waitElementClickableWithMiddleWait(secondCategory);
-        waitUtils.waitLoadingPage(7);
+        waitUtils.waitElementWithMiddleWaitAndClick(secondCategory);
+        waitUtils.waitLoadingPageWithJavaScript(7);
     }
 
     public void checkBoxThemeSwitchClick() {
-        checkBoxThemeSwitch.click();
-        waitUtils.waitLoadingPage(7);
+        waitUtils.waitElementWithMiddleWaitAndClick(checkBoxThemeSwitch);
+        waitUtils.waitLoadingPageWithJavaScript(7);
     }
 
     public void doSearch(String text) {
-        waitUtils.waitElementClickableWithMiddleWait(searchBox);
+        waitUtils.waitElementWithMiddleWaitAndClick(searchBox);
         typeTextUtils.sendText(searchBox,text);
         typeTextUtils.pushKeys(searchBox,Keys.ENTER);
         waitUtils.waitVisibilityAllElementsWithMaximumWait(productCart);
@@ -166,7 +164,7 @@ public class MainPage extends BasePage {
     }
 
     public boolean isCheckBtnSuccesLogin(){
-        return btnSuccesLogin.isEnabled();
+        return waitUtils.waitElementVisibilityWithMinimumWait(btnSuccesLogin).isEnabled();
     }
 
     public void setFieldNameOnOrdering(String text) {
@@ -185,8 +183,7 @@ public class MainPage extends BasePage {
     }
 
     public boolean isCheckBtnCheckOut(){
-        waitUtils.waitElementVisibilityWithMiddleWait(btnCheckOut);
-        return btnCheckOut.isEnabled();
+        return waitUtils.waitElementVisibilityWithMinimumWait(btnCheckOut).isEnabled();
     }
 
     public void setInputRecoveryPassword(String text) {
@@ -194,7 +191,7 @@ public class MainPage extends BasePage {
     }
 
     public boolean isCheckBtnSendCodeRecoveryPassword(){
-        return btnSendCodeRecoveryPassword.isEnabled();
+        return waitUtils.waitElementVisibilityWithMaximumWait(btnSendCodeRecoveryPassword).isEnabled();
     }
 
     public void setInputRegisterName(String text) {
@@ -214,6 +211,6 @@ public class MainPage extends BasePage {
     }
 
     public boolean isCheckSuccesRegisterBtn(){
-        return succesRegisterBtn.isEnabled();
+        return waitUtils.waitElementVisibilityWithMaximumWait(succesRegisterBtn).isEnabled();
     }
 }

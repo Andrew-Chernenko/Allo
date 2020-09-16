@@ -30,7 +30,7 @@ public class ProductListPage extends BasePage {
     }
 
     public void navigateToProductDescriptionPage(String element) {
-        waitUtils.waitLoadingPage(5);
+        waitUtils.waitLoadingPageWithJavaScript(5);
         for (WebElement webElement : productCart) {
             if (webElement.getText().contains(element)) {
                 webElement.click();
