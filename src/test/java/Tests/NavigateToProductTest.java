@@ -21,7 +21,7 @@ public class NavigateToProductTest extends BaseTest {
     @Test
     public void moveToIphone() {
         MainPage page = new MainPage(driver);
-        page.doSearch("Телефон");
+        page.doSearch("Samsung");
         ProductListPage productListPage = new ProductListPage(driver);
         productListPage.navigateToProductDescriptionPage("SM-N985FZNGSEK");
         ProductDescriptionPage productDescriptionPage = new ProductDescriptionPage(driver);

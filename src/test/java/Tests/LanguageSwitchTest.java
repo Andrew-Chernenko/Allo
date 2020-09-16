@@ -9,7 +9,7 @@ public class LanguageSwitchTest extends BaseTest {
     @Test
     public void checkSwapLanguage() {
         MainPage page = new MainPage(driver);
-        page.swapLanguageThemeClick();
+        page.swapLanguageClick();
         Assert.assertNotEquals(driver.getCurrentUrl(), BaseTest.link);
     }
 }

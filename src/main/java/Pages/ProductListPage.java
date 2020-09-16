@@ -14,6 +14,7 @@ public class ProductListPage extends BasePage {
     @FindBy(xpath = ".//div[@class='cart-popup__body']")
     private WebElement productCartPopUp;
 
+
     public ProductListPage(WebDriver driver) {
         super(driver);
     }
@@ -22,7 +23,7 @@ public class ProductListPage extends BasePage {
         for (WebElement webElement : productCart) {
             if (webElement.getText().contains(text)) {
                 webElement.findElement(By.xpath(".//button[contains(@class,'buy-button--animation')]")).click();
-                waitUtils.waitElementClickableWithMaximumWait(productCartPopUp);
+                 waitUtils.waitElementVisibilityWithMiddleWait(productCartPopUp);
                 break;
             }
         }

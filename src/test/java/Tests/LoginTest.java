@@ -3,7 +3,6 @@ import BaseTest.BaseTest;
 import Pages.MainPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.WaitUtils;
 
 public class LoginTest extends BaseTest {
 

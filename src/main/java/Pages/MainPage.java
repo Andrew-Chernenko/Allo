@@ -6,10 +6,12 @@ import BasePage.BasePage;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class MainPage extends BasePage {
 
     @FindBy(xpath = ".//div[contains(@class,'product-card v-loaded')]")
-    private WebElement productCart;
+    private List<WebElement> productCart;
 
     @FindBy(xpath = ".//span[@class='shopping-cart__count']")
     private WebElement cart;
@@ -86,10 +88,10 @@ public class MainPage extends BasePage {
     @FindBy(xpath = ".//div[@class='header-theme']//div[@class='switcher-toggle']")
     private WebElement checkBoxThemeSwitch;
 
-    @FindBy(xpath = "//div[@id='customer-login-menu']")
+    @FindBy(xpath = ".//div[@id='customer-popup-menu']")
     private WebElement loginMenu;
 
-    @FindBy(xpath = "//form[@id='form-validate-register']")
+    @FindBy(xpath = ".//form[@id='form-validate-register']")
     private WebElement registerMenu;
 
     public MainPage(WebDriver driver) {
@@ -107,45 +109,39 @@ public class MainPage extends BasePage {
         return Color.fromString(headerColor).asHex();
     }
 
-    public void swapLanguageThemeClick() {
+    public void swapLanguageClick() {
         waitUtils.waitElementClickableWithMiddleWait(languageSwitch);
-        languageSwitch.click();
         waitUtils.waitLoadingPage(3);
     }
 
     public void loginClickBtn() {
         waitUtils.waitElementClickableWithMiddleWait(loginBtn);
-        loginBtn.click();
-        waitUtils.waitElementClickableWithMiddleWait(loginMenu);
+        waitUtils.waitElementVisibilityWithMiddleWait(loginMenu);
     }
 
     public void orderBtnClick() {
         waitUtils.waitElementClickableWithMiddleWait(btnOrdering);
-        btnOrdering.click();
     }
 
     public void btnRecoveryPasswordClick() {
         btnRecoveryPassword.click();
-        waitUtils.waitElementClickableWithMiddleWait(loginMenu);
     }
 
     public void registerBtnClick() {
-        waitUtils.waitElementClickableWithMiddleWait(loginBtn);
+        waitUtils.waitElementVisibilityWithMiddleWait(loginBtn);
         loginBtn.click();
-        waitUtils.waitElementClickableWithMiddleWait(btnRegister);
+        waitUtils.waitElementVisibilityWithMiddleWait(btnRegister);
         btnRegister.click();
-        waitUtils.waitElementClickableWithMiddleWait(registerMenu);
+        waitUtils.waitElementVisibilityWithMiddleWait(registerMenu);
     }
 
     public void firstCategoryClick() {
-        waitUtils.waitLoadingPage(7);
-        firstCategory.click();
+        waitUtils.waitElementClickableWithMiddleWait(firstCategory);
         waitUtils.waitLoadingPage(7);
     }
 
     public void secondCategoryClick() {
-        waitUtils.waitLoadingPage(7);
-        secondCategory.click();
+        waitUtils.waitElementClickableWithMiddleWait(secondCategory);
         waitUtils.waitLoadingPage(7);
     }
 
@@ -158,7 +154,7 @@ public class MainPage extends BasePage {
         waitUtils.waitElementClickableWithMiddleWait(searchBox);
         typeTextUtils.sendText(searchBox,text);
         typeTextUtils.pushKeys(searchBox,Keys.ENTER);
-        waitUtils.waitElementClickableWithMaximumWait(productCart);
+        waitUtils.waitVisibilityAllElementsWithMaximumWait(productCart);
     }
 
     public void setFieldLogin(String text){
@@ -174,22 +170,22 @@ public class MainPage extends BasePage {
     }
 
     public void setFieldNameOnOrdering(String text) {
-        waitUtils.waitElementClickableWithMiddleWait(fieldName);
+        waitUtils.waitElementVisibilityWithMiddleWait(fieldName);
         typeTextUtils.sendText(fieldName,text);
     }
 
     public void setFieldTelephoneOnOrdering(String text) {
-        waitUtils.waitElementClickableWithMiddleWait(fieldTelephone);
+        waitUtils.waitElementVisibilityWithMiddleWait(fieldTelephone);
         typeTextUtils.sendText(fieldTelephone,text);
     }
 
     public void setFieldEmailOnOrdering(String text) {
-        waitUtils.waitElementClickableWithMiddleWait(fieldEmail);
+        waitUtils.waitElementVisibilityWithMiddleWait(fieldEmail);
         typeTextUtils.sendText(fieldEmail,text);
     }
 
     public boolean isCheckBtnCheckOut(){
-        waitUtils.waitElementClickableWithMiddleWait(btnCheckOut);
+        waitUtils.waitElementVisibilityWithMiddleWait(btnCheckOut);
         return btnCheckOut.isEnabled();
     }
 
