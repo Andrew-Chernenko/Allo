@@ -4,7 +4,6 @@ import Pages.MainPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-
 public class PasswordRecoveryTest extends BaseTest {
 
     @Test

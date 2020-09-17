@@ -20,8 +20,8 @@ public class ProductListPage extends BasePage {
     }
 
     public void productBtnClick(String text) {
-        waitUtils.waitVisibilityAllElementsWithMiddleWait(productCart);
-        for (WebElement webElement : productCart) {
+        List<WebElement> products = waitUtils.waitVisibilityAllElementsWithMiddleWait(productCart);
+        for (WebElement webElement : products) {
             if (webElement.getText().contains(text)) {
                 webElement.findElement(By.xpath(".//button[contains(@class,'buy-button--animation')]")).click();
                  waitUtils.waitElementVisibilityWithMiddleWait(productCartPopUp);
@@ -31,8 +31,8 @@ public class ProductListPage extends BasePage {
     }
 
     public void navigateToProductDescriptionPage(String element) {
-        waitUtils.waitVisibilityAllElementsWithMiddleWait(productCart);
-        for (WebElement webElement : productCart) {
+        List<WebElement> products = waitUtils.waitVisibilityAllElementsWithMiddleWait(productCart);
+        for (WebElement webElement : products) {
             if (webElement.getText().contains(element)) {
                 webElement.click();
                 break;

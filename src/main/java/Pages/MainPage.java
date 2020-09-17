@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import BasePage.BasePage;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
-
 import java.util.List;
 
 public class MainPage extends BasePage {
