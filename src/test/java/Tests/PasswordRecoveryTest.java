@@ -3,14 +3,12 @@ import BaseTest.BaseTest;
 import Pages.MainPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.SleeperUtils;
 
 public class PasswordRecoveryTest extends BaseTest {
 
     @Test
-    public void passwordRecovery() throws InterruptedException {
+    public void passwordRecovery() {
         MainPage page = new MainPage(driver);
-        SleeperUtils.threadSleep(1);
         page.loginClickBtn();
         page.btnRecoveryPasswordClick();
         page.setInputRecoveryPassword("test@gmail.com");

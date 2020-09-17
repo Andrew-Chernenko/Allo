@@ -3,16 +3,13 @@ import BaseTest.BaseTest;
 import Pages.MainPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.SleeperUtils;
 
 public class LanguageSwitchTest extends BaseTest {
 
     @Test
-    public void checkSwap() throws InterruptedException {
+    public void checkSwapLanguage() {
         MainPage page = new MainPage(driver);
-        SleeperUtils.threadSleep(1);
-        page.swapLanguageThemeClick();
-        SleeperUtils.threadSleep(2);
+        page.swapLanguageClick();
         Assert.assertNotEquals(driver.getCurrentUrl(), BaseTest.link);
     }
 }

@@ -4,18 +4,15 @@ import Pages.MainPage;
 import Pages.ProductListPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.SleeperUtils;
 
 public class OrderingTest extends BaseTest {
 
     @Test
-    public void orderingPurchase() throws InterruptedException {
+    public void orderingPurchase() {
         MainPage page = new MainPage(driver);
-        SleeperUtils.threadSleep(1);
         page.doSearch("Айфон");
         ProductListPage productListPage = new ProductListPage(driver);
-        productListPage.buyProductBtnClick(3);
-        SleeperUtils.threadSleep(4);
+        productListPage.productBtnClick("MWM02");
         page.orderBtnClick();
         page.setFieldNameOnOrdering("Андрей");
         page.setFieldTelephoneOnOrdering("994567634");
@@ -24,12 +21,11 @@ public class OrderingTest extends BaseTest {
     }
 
     @Test
-    public void orderingPurchaseFalse() throws InterruptedException {
+    public void orderingPurchaseIncorrectData() {
         MainPage page = new MainPage(driver);
-        SleeperUtils.threadSleep(1);
         page.doSearch("Микроволновка");
         ProductListPage productListPage = new ProductListPage(driver);
-        productListPage.buyProductBtnClick(2);
+        productListPage.productBtnClick("MWBLXE1ACM");
         page.orderBtnClick();
         Assert.assertFalse(page.isCheckBtnCheckOut());
     }

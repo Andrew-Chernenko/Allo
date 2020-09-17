@@ -4,18 +4,16 @@ import Pages.ProductListPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import Pages.MainPage;
-import utils.SleeperUtils;
 
 public class AddProductToCartTest extends BaseTest {
 
     @Test
-    public void checkAddProduct() throws InterruptedException {
+    public void checkAddProduct() {
         MainPage page = new MainPage(driver);
         String oldCardValue = page.takeCartValue();
-        page.doSearch("Телефон");
+        page.doSearch("Samsung");
         ProductListPage productListPage = new ProductListPage(driver);
-        productListPage.buyProductBtnClick(3);
-        SleeperUtils.threadSleep(4);
+        productListPage.productBtnClick("SM-N985FZNGSEK");
         String newCartValue = page.takeCartValue();
         Assert.assertNotEquals(oldCardValue, newCartValue);
     }

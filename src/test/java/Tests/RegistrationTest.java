@@ -3,14 +3,12 @@ import BaseTest.BaseTest;
 import Pages.MainPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import utils.SleeperUtils;
 
 public class RegistrationTest extends BaseTest {
 
     @Test
-    public void registerCheck() throws InterruptedException {
+    public void registerCheck() {
         MainPage page = new MainPage(driver);
-        SleeperUtils.threadSleep(2);
         page.registerBtnClick();
         page.setInputRegisterName("Андрей");
         page.setInputRegisterPhone("956765444");
