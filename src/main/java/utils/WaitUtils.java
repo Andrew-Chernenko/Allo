@@ -19,22 +19,22 @@ public class WaitUtils {
         this.driver = driver;
     }
 
-    public WebElement waitInVisibleElement(WebElement element,int timeout){
+    public WebElement waitInvisibleOfElement(WebElement element,int timeout){
         Boolean wait = (new WebDriverWait(driver,timeout))
                 .until(ExpectedConditions.invisibilityOf(element));
         return element;
     }
 
     public WebElement waitInVisibleElementMinimumWait(WebElement element){
-        return waitElementVisibility(element,MINIMUMLIMIT);
+        return waitInvisibleOfElement(element,MINIMUMLIMIT);
     }
 
     public WebElement waitInVisibleElementMiddleWait(WebElement element){
-        return waitElementVisibility(element,MIDDLELIMIT);
+        return waitInvisibleOfElement(element,MIDDLELIMIT);
     }
 
     public WebElement waitInVisibleElementMaximumWait(WebElement element){
-        return waitElementVisibility(element,MAXIMUMLIMIT);
+        return waitInvisibleOfElement(element,MAXIMUMLIMIT);
     }
 
     public List<WebElement> waitVisibilityAllElements(List<WebElement> webElements, int timeout){
@@ -92,8 +92,8 @@ public class WaitUtils {
         return waitElementVisibility(element,MAXIMUMLIMIT);
     }
 
-    public void waitLoadingPageWithJavaScript(int timeout){
-        Wait<WebDriver> wait = new WebDriverWait(driver,timeout);
+    public void waitLoadingPageWithJavaScript(){
+        Wait<WebDriver> wait = new WebDriverWait(driver,MIDDLELIMIT);
         wait.until(new Function<WebDriver, Boolean>() {
             public Boolean apply (WebDriver driver){
                 return String

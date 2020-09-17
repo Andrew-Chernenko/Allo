@@ -12,12 +12,12 @@ public class TypeTextUtils {
         waitUtils = new WaitUtils(this.driver);
     }
     public void sendText(WebElement element, String text) {
-        waitUtils.waitElementVisibilityWithMaximumWait(element);
+        waitUtils.waitElementVisibilityWithMiddleWait(element);
         element.sendKeys(text);
     }
 
     public void pushKeys(WebElement element, Keys keys) {
-        waitUtils.waitElementVisibilityWithMaximumWait(element);
+        waitUtils.waitElementVisibilityWithMiddleWait(element);
         element.sendKeys(keys);
     }
 

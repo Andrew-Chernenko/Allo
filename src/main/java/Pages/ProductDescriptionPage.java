@@ -14,6 +14,6 @@ public class ProductDescriptionPage extends BasePage {
     }
 
     public boolean isContainsProductName(String text) {
-        return productName.getText().contains(text);
+        return waitUtils.waitElementVisibilityWithMiddleWait(productName).getText().contains(text);
     }
 }

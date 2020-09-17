@@ -104,14 +104,14 @@ public class MainPage extends BasePage {
 
     public String getHeaderColor() {
         String headerColor;
-        waitUtils.waitLoadingPageWithJavaScript(7);
+        waitUtils.waitElementVisibilityWithMiddleWait(header);
         headerColor = header.getCssValue("background-color");
         return Color.fromString(headerColor).asHex();
     }
 
     public void swapLanguageClick() {
         waitUtils.waitElementWithMiddleWaitAndClick(languageSwitch);
-        waitUtils.waitLoadingPageWithJavaScript(3);
+        waitUtils.waitLoadingPageWithJavaScript();
     }
 
     public void loginClickBtn() {
@@ -135,17 +135,17 @@ public class MainPage extends BasePage {
 
     public void firstCategoryClick() {
         waitUtils.waitElementWithMiddleWaitAndClick(firstCategory);
-        waitUtils.waitLoadingPageWithJavaScript(7);
+        waitUtils.waitLoadingPageWithJavaScript();
     }
 
     public void secondCategoryClick() {
         waitUtils.waitElementWithMiddleWaitAndClick(secondCategory);
-        waitUtils.waitLoadingPageWithJavaScript(7);
+        waitUtils.waitLoadingPageWithJavaScript();
     }
 
     public void checkBoxThemeSwitchClick() {
         waitUtils.waitElementWithMiddleWaitAndClick(checkBoxThemeSwitch);
-        waitUtils.waitLoadingPageWithJavaScript(7);
+        waitUtils.waitLoadingPageWithJavaScript();
     }
 
     public void doSearch(String text) {
