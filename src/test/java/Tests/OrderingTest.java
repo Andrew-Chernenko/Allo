@@ -1,7 +1,10 @@
 package Tests;
 import BaseTest.BaseTest;
+import Pages.CartPage;
 import Pages.MainPage;
+import Pages.OrderingPage;
 import Pages.ProductListPage;
+import utils.EntityData.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,11 +16,15 @@ public class OrderingTest extends BaseTest {
         page.doSearch("Айфон");
         ProductListPage productListPage = new ProductListPage(driver);
         productListPage.productBtnClick("MWM02");
-        page.orderBtnClick();
-        page.setFieldNameOnOrdering("Андрей");
-        page.setFieldTelephoneOnOrdering("994567634");
-        page.setFieldEmailOnOrdering("test@gmail.com");
-        Assert.assertTrue(page.isCheckBtnCheckOut());
+        CartPage cartPage = new CartPage(driver);
+        cartPage.orderBtnClick();
+        OrderingPage orderingPage = new OrderingPage(driver);
+        User user = new User();
+        user.setName("Андрей");
+        user.setPhone("994567634");
+        user.setEmail("test@gmail.com");
+        orderingPage.setFieldOrdering(user);
+        Assert.assertTrue(orderingPage.isCheckBtnCheckOut());
     }
 
     @Test
@@ -26,7 +33,9 @@ public class OrderingTest extends BaseTest {
         page.doSearch("Микроволновка");
         ProductListPage productListPage = new ProductListPage(driver);
         productListPage.productBtnClick("MWBLXE1ACM");
-        page.orderBtnClick();
-        Assert.assertFalse(page.isCheckBtnCheckOut());
+        CartPage cartPage = new CartPage(driver);
+        cartPage.orderBtnClick();
+        OrderingPage orderingPage = new OrderingPage(driver);
+        Assert.assertFalse(orderingPage.isCheckBtnCheckOut());
     }
 }

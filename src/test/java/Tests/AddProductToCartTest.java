@@ -1,5 +1,6 @@
 package Tests;
 import BaseTest.BaseTest;
+import Pages.CartPage;
 import Pages.ProductListPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -14,6 +15,8 @@ public class AddProductToCartTest extends BaseTest {
         page.doSearch("Samsung");
         ProductListPage productListPage = new ProductListPage(driver);
         productListPage.productBtnClick("SM-N985FZNGSEK");
+        CartPage cartPage = new CartPage(driver);
+        cartPage.cartPopUp();
         String newCartValue = page.takeCartValue();
         Assert.assertNotEquals(oldCardValue, newCartValue);
     }
