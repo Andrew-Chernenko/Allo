@@ -12,6 +12,7 @@ public class OrderingTest extends BaseTest {
 
     @Test
     public void orderingPurchase() {
+        User user = new User();
         MainPage page = new MainPage(driver);
         page.doSearch("Айфон");
         ProductListPage productListPage = new ProductListPage(driver);
@@ -19,7 +20,6 @@ public class OrderingTest extends BaseTest {
         CartPage cartPage = new CartPage(driver);
         cartPage.orderBtnClick();
         OrderingPage orderingPage = new OrderingPage(driver);
-        User user = new User();
         user.setName("Андрей");
         user.setPhone("994567634");
         user.setEmail("test@gmail.com");
@@ -27,6 +27,8 @@ public class OrderingTest extends BaseTest {
         Assert.assertTrue(orderingPage.isCheckBtnCheckOut());
     }
 
+
+    //негативный тест, оставлять?
     @Test
     public void orderingPurchaseIncorrectData() {
         MainPage page = new MainPage(driver);

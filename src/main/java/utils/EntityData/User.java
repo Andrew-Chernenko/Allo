@@ -2,10 +2,10 @@ package utils.EntityData;
 
 public class User {
 
-    private String password = "";
-    private String email = "";
-    private String name = "";
-    private String phone = "";
+    private String password;
+    private String email;
+    private String name;
+    private String phone;
 
     public String getPassword(){
         return password;

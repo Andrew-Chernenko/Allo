@@ -10,9 +10,9 @@ public class RegistrationTest extends BaseTest {
 
     @Test
     public void registerCheck() {
+        User user = new User();
         MainPage page = new MainPage(driver);
         RegisterMenuPage registerMenuPage = page.registerBtnClick();
-        User user = new User();
         user.setName("Андрей");
         user.setPhone("956765444");
         user.setEmail("test12345612355@gmail.com");
