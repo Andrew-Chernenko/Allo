@@ -1,5 +1,6 @@
 package Tests;
 import BaseTest.BaseTest;
+import Pages.CategoryPage;
 import Pages.MainPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,13 +11,15 @@ public class SwitchCategoryTest extends BaseTest {
     public void checkCategoryFirst() {
         MainPage page = new MainPage(driver);
         page.firstCategoryClick();
-        Assert.assertEquals(driver.getCurrentUrl(), "https://allo.ua/ua/mobilnye-telefony-i-sredstva-svyazi/");
+        CategoryPage categoryPage = new CategoryPage(driver);
+        Assert.assertEquals(categoryPage.returnUrl(),"https://allo.ua/ua/mobilnye-telefony-i-sredstva-svyazi/");
     }
 
     @Test
     public void checkCategorySecond() {
         MainPage page = new MainPage(driver);
         page.secondCategoryClick();
-        Assert.assertEquals(driver.getCurrentUrl(), "https://allo.ua/ua/bytovaya-tehnika/");
+        CategoryPage categoryPage = new CategoryPage(driver);
+        Assert.assertEquals(categoryPage.returnUrl(),"https://allo.ua/ua/bytovaya-tehnika/");
     }
 }
