@@ -20,7 +20,7 @@ public class CartPage extends BasePage {
         waitUtils.waitElementWithMiddleWaitAndClick(btnOrdering);
     }
 
-    public void cartPopUp(){
+    public void cartPopUpAppearing(){
         waitUtils.waitElementVisibilityWithMiddleWait(productCartPopUp);
     }
 }

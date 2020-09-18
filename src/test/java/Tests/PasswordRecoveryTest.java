@@ -11,10 +11,10 @@ public class PasswordRecoveryTest extends BaseTest {
     @Test
     public void passwordRecovery() {
         User user = new User();
+        user.setEmail("test@gmail.com");
         MainPage page = new MainPage(driver);
         LoginMenuPage loginMenuPage = page.loginClickBtn();
         loginMenuPage.btnRecoveryPasswordClick();
-        user.setEmail("test@gmail.com");
         loginMenuPage.setInputRecoveryPassword(user);
         Assert.assertTrue(loginMenuPage.isCheckBtnSendCodeRecoveryPassword());
     }

@@ -16,7 +16,7 @@ public class AddProductToCartTest extends BaseTest {
         ProductListPage productListPage = new ProductListPage(driver);
         productListPage.productBtnClick("SM-N985FZNGSEK");
         CartPage cartPage = new CartPage(driver);
-        cartPage.cartPopUp();
+        cartPage.cartPopUpAppearing();
         String newCartValue = page.takeCartValue();
         Assert.assertNotEquals(oldCardValue, newCartValue);
     }
