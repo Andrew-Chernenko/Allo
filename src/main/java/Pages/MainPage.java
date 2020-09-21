@@ -6,7 +6,6 @@ import BasePage.BasePage;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class MainPage extends BasePage {
 
@@ -44,7 +43,7 @@ public class MainPage extends BasePage {
     private WebElement slider;
 
     @FindBy(xpath = ".//span[@class='language__ru active']")
-    private WebElement correctLanguage;
+    private WebElement languageAfterSwap;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -64,9 +63,8 @@ public class MainPage extends BasePage {
 
     public void swapLanguageClick() {
         waitUtils.waitElementWithMiddleWaitAndClick(languageSwitch);
-        waitUtils.getElementWhenVisibleMiddleWait(correctLanguage);
+        waitUtils.getElementWhenVisibleMiddleWait(languageAfterSwap);
         waitUtils.waitLoadingPageWithJavaScript();
-
     }
 
     public LoginMenuPage loginClickBtn() {
