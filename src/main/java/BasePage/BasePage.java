@@ -4,7 +4,7 @@ import org.openqa.selenium.support.PageFactory;
 import utils.WaitUtils;
 import utils.TypeTextUtils;
 
-public class BasePage {
+public abstract class BasePage implements CheckLoadComponentInterface {
 
    protected WebDriver driver;
    protected TypeTextUtils typeTextUtils;
@@ -16,5 +16,4 @@ public class BasePage {
         waitUtils = new WaitUtils(driver);
         PageFactory.initElements(driver, this);
     }
-
 }

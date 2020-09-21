@@ -13,6 +13,7 @@ public class ProductListPage extends BasePage {
 
     public ProductListPage(WebDriver driver) {
         super(driver);
+        waitLoadComponent();
     }
 
     public void productBtnClick(String text) {
@@ -36,7 +37,12 @@ public class ProductListPage extends BasePage {
     }
 
     public String returnUrl(){
-        List<WebElement> products = waitUtils.waitVisibilityAllElementsWithMiddleWait(productCart);
+        waitUtils.waitVisibilityAllElementsWithMiddleWait(productCart);
         return driver.getCurrentUrl();
+    }
+
+    @Override
+    public void waitLoadComponent() {
+        waitUtils.waitVisibilityAllElementsWithMiddleWait(productCart);
     }
 }

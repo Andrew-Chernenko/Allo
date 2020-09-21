@@ -39,12 +39,19 @@ public class MainPage extends BasePage {
     @FindBy(xpath = ".//div[@class='header-theme']//div[@class='switcher-toggle']")
     private WebElement checkBoxThemeSwitch;
 
+    @FindBy(xpath = ".//div[@class='banner__gradient']")
+    private WebElement slider;
+
+    @FindBy(xpath = ".//span[@class='language__ru active']")
+    private WebElement languageAfterSwap;
+
     public MainPage(WebDriver driver) {
         super(driver);
+        waitLoadComponent();
     }
 
     public String takeCartValue() {
-        return waitUtils.waitElementVisibilityWithMinimumWait(cart).getText();
+        return waitUtils.getElementWhenVisibleMinimumWait(cart).getText();
     }
 
     public String getHeaderColor() {
@@ -56,6 +63,7 @@ public class MainPage extends BasePage {
 
     public void swapLanguageClick() {
         waitUtils.waitElementWithMiddleWaitAndClick(languageSwitch);
+        waitUtils.getElementWhenVisibleMiddleWait(languageAfterSwap);
         waitUtils.waitLoadingPageWithJavaScript();
     }
 
@@ -90,5 +98,13 @@ public class MainPage extends BasePage {
         waitUtils.waitElementWithMiddleWaitAndClick(searchBox);
         typeTextUtils.sendText(searchBox,text);
         typeTextUtils.pushKeys(searchBox,Keys.ENTER);
+    }
+
+    @Override
+    public void waitLoadComponent() {
+        waitUtils.waitElementVisibilityWithMiddleWait(header);
+        waitUtils.waitElementVisibilityWithMiddleWait(loginBtn);
+        waitUtils.waitElementVisibilityWithMiddleWait(firstCategory);
+        waitUtils.waitElementVisibilityWithMiddleWait(slider);
     }
 }

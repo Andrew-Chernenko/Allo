@@ -19,22 +19,21 @@ public class WaitUtils {
         this.driver = driver;
     }
 
-    public WebElement waitInvisibleOfElement(WebElement element,int timeout){
+    public void waitInvisibleOfElement(WebElement element,int timeout){
         Boolean wait = (new WebDriverWait(driver,timeout))
                 .until(ExpectedConditions.invisibilityOf(element));
-        return element;
     }
 
-    public WebElement waitInVisibleElementMinimumWait(WebElement element){
-        return waitInvisibleOfElement(element,MINIMUMLIMIT);
+    public void waitInVisibleElementMinimumWait(WebElement element){
+        waitInvisibleOfElement(element,MINIMUMLIMIT);
     }
 
-    public WebElement waitInVisibleElementMiddleWait(WebElement element){
-        return waitInvisibleOfElement(element,MIDDLELIMIT);
+    public void waitInVisibleElementMiddleWait(WebElement element){
+        waitInvisibleOfElement(element,MIDDLELIMIT);
     }
 
-    public WebElement waitInVisibleElementMaximumWait(WebElement element){
-        return waitInvisibleOfElement(element,MAXIMUMLIMIT);
+    public void waitInVisibleElementMaximumWait(WebElement element){
+        waitInvisibleOfElement(element,MAXIMUMLIMIT);
     }
 
     public List<WebElement> waitVisibilityAllElements(List<WebElement> webElements, int timeout){
@@ -55,41 +54,57 @@ public class WaitUtils {
         return waitVisibilityAllElements(webElements,MAXIMUMLIMIT);
     }
 
-    public WebElement waitElementClickable(WebElement element, int timeout){
+    public void waitElementClickable(WebElement element, int timeout){
         WebElement wait = (new WebDriverWait(driver,timeout))
                 .until(ExpectedConditions.elementToBeClickable(element));
         element.click();
-        return element;
     }
 
-    public WebElement waitElementWithMinimumWaitAndClick(WebElement element){
-        return waitElementClickable(element,MINIMUMLIMIT);
+    public void waitElementWithMinimumWaitAndClick(WebElement element){
+         waitElementClickable(element,MINIMUMLIMIT);
     }
 
-    public WebElement waitElementWithMiddleWaitAndClick(WebElement element){
-        return waitElementClickable(element,MIDDLELIMIT);
+    public void waitElementWithMiddleWaitAndClick(WebElement element){
+        waitElementClickable(element,MIDDLELIMIT);
     }
 
-    public WebElement waitElementWithMaximumWaitAndClick(WebElement element){
-        return waitElementClickable(element,MAXIMUMLIMIT);
+    public void waitElementWithMaximumWaitAndClick(WebElement element){
+         waitElementClickable(element,MAXIMUMLIMIT);
     }
 
-    public WebElement waitElementVisibility(WebElement element,int timeout){
+    public void waitElementVisibility(WebElement element,int timeout){
+        WebElement wait = (new WebDriverWait(driver,timeout))
+                .until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void waitElementVisibilityWithMinimumWait(WebElement element){
+         waitElementVisibility(element,MINIMUMLIMIT);
+    }
+
+    public void waitElementVisibilityWithMiddleWait(WebElement element){
+         waitElementVisibility(element,MIDDLELIMIT);
+    }
+
+    public void waitElementVisibilityWithMaximumWait(WebElement element){
+        waitElementVisibility(element,MAXIMUMLIMIT);
+    }
+
+    public WebElement getElementWhenVisible(WebElement element,int timeout){
         WebElement wait = (new WebDriverWait(driver,timeout))
                 .until(ExpectedConditions.visibilityOf(element));
         return element;
     }
 
-    public WebElement waitElementVisibilityWithMinimumWait(WebElement element){
-        return waitElementVisibility(element,MINIMUMLIMIT);
+    public WebElement getElementWhenVisibleMinimumWait(WebElement element){
+        return getElementWhenVisible(element,MINIMUMLIMIT);
     }
 
-    public WebElement waitElementVisibilityWithMiddleWait(WebElement element){
-        return waitElementVisibility(element,MIDDLELIMIT);
+    public WebElement getElementWhenVisibleMiddleWait(WebElement element){
+        return getElementWhenVisible(element,MIDDLELIMIT);
     }
 
-    public WebElement waitElementVisibilityWithMaximumWait(WebElement element){
-        return waitElementVisibility(element,MAXIMUMLIMIT);
+    public WebElement getElementWhenVisibleMaximumWait(WebElement element){
+        return getElementWhenVisible(element,MAXIMUMLIMIT);
     }
 
     public void waitLoadingPageWithJavaScript(){
