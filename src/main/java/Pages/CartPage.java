@@ -14,6 +14,7 @@ public class CartPage extends BasePage {
 
     public CartPage(WebDriver driver) {
         super(driver);
+        waitLoadComponent();
     }
 
     public void orderBtnClick() {
@@ -21,6 +22,12 @@ public class CartPage extends BasePage {
     }
 
     public void cartPopUpAppearing(){
+        waitUtils.waitElementVisibilityWithMiddleWait(productCartPopUp);
+    }
+
+    @Override
+    public void waitLoadComponent() {
+        waitUtils.waitElementVisibilityWithMiddleWait(btnOrdering);
         waitUtils.waitElementVisibilityWithMiddleWait(productCartPopUp);
     }
 }

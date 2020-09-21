@@ -9,6 +9,7 @@ public class RegisterMenuPage extends BasePage {
 
     @FindBy(xpath = ".//form[@id='form-validate-register']")
     private WebElement registerMenu;
+
     @FindBy(xpath = ".//input[@id='v-register-name']")
     private WebElement inputRegisterName;
 
@@ -26,6 +27,7 @@ public class RegisterMenuPage extends BasePage {
 
     public RegisterMenuPage(WebDriver driver) {
         super(driver);
+        waitLoadComponent();
     }
 
     public void setInputRegisterData(User user) {
@@ -38,5 +40,10 @@ public class RegisterMenuPage extends BasePage {
 
     public boolean isCheckSuccesRegisterBtn(){
         return waitUtils.waitElementVisibilityWithMaximumWait(succesRegisterBtn).isEnabled();
+    }
+
+    @Override
+    public void waitLoadComponent() {
+        waitUtils.waitElementVisibilityWithMiddleWait(registerMenu);
     }
 }

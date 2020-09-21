@@ -1,10 +1,11 @@
 package BasePage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import utils.WaitUtils;
 import utils.TypeTextUtils;
 
-public class BasePage {
+public class BasePage implements CheckLoadComponentInterface {
 
    protected WebDriver driver;
    protected TypeTextUtils typeTextUtils;
@@ -17,4 +18,8 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    @Override
+    public void waitLoadComponent() {
+
+    }
 }

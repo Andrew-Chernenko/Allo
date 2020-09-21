@@ -21,6 +21,7 @@ public class OrderingPage extends BasePage {
 
     public OrderingPage(WebDriver driver) {
         super(driver);
+        waitLoadComponent();
     }
 
     public void setFieldOrdering(User user) {
@@ -32,5 +33,10 @@ public class OrderingPage extends BasePage {
 
     public boolean isCheckBtnCheckOut(){
         return waitUtils.waitElementVisibilityWithMinimumWait(btnCheckOut).isEnabled();
+    }
+
+    @Override
+    public void waitLoadComponent() {
+        waitUtils.waitElementVisibilityWithMiddleWait(fieldName);
     }
 }

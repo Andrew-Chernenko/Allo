@@ -39,8 +39,12 @@ public class MainPage extends BasePage {
     @FindBy(xpath = ".//div[@class='header-theme']//div[@class='switcher-toggle']")
     private WebElement checkBoxThemeSwitch;
 
+    @FindBy(xpath = "//div[@class='banner__gradient']")
+    private WebElement slider;
+
     public MainPage(WebDriver driver) {
         super(driver);
+        waitLoadComponent();
     }
 
     public String takeCartValue() {
@@ -90,5 +94,13 @@ public class MainPage extends BasePage {
         waitUtils.waitElementWithMiddleWaitAndClick(searchBox);
         typeTextUtils.sendText(searchBox,text);
         typeTextUtils.pushKeys(searchBox,Keys.ENTER);
+    }
+
+    @Override
+    public void waitLoadComponent() {
+        waitUtils.waitElementVisibilityWithMiddleWait(header);
+        waitUtils.waitElementVisibilityWithMiddleWait(loginBtn);
+        waitUtils.waitElementVisibilityWithMiddleWait(firstCategory);
+        waitUtils.waitElementVisibilityWithMiddleWait(slider);
     }
 }

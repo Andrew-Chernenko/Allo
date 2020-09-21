@@ -30,6 +30,7 @@ public class LoginMenuPage extends BasePage {
 
     public LoginMenuPage(WebDriver driver) {
         super(driver);
+        waitLoadComponent();
     }
 
     public void setFieldLoginProcces(User user){
@@ -53,5 +54,10 @@ public class LoginMenuPage extends BasePage {
 
     public boolean isCheckBtnSendCodeRecoveryPassword(){
         return waitUtils.waitElementVisibilityWithMaximumWait(btnSendCodeRecoveryPassword).isEnabled();
+    }
+
+    @Override
+    public void waitLoadComponent() {
+        waitUtils.waitElementVisibilityWithMiddleWait(loginMenu);
     }
 }

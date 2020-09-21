@@ -19,6 +19,12 @@ public class WaitUtils {
         this.driver = driver;
     }
 
+    public WebElement[] waitVisibilityAllElementsForArrayWithMiddleWait(WebElement[] elements){
+        List<WebElement> wait = (new WebDriverWait(driver,MIDDLELIMIT))
+                .until(ExpectedConditions.visibilityOfAllElements(elements));
+        return elements;
+    }
+
     public WebElement waitInvisibleOfElement(WebElement element,int timeout){
         Boolean wait = (new WebDriverWait(driver,timeout))
                 .until(ExpectedConditions.invisibilityOf(element));
