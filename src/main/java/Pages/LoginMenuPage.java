@@ -40,7 +40,7 @@ public class LoginMenuPage extends BasePage {
     }
 
     public boolean isCheckSuccesRegisterBtn(){
-        return waitUtils.waitElementVisibilityWithMaximumWait(btnSuccesLogin).isEnabled();
+        return waitUtils.getElementWhenVisibleMaximumWait(btnSuccesLogin).isEnabled();
     }
 
     public void btnRecoveryPasswordClick() {
@@ -53,7 +53,7 @@ public class LoginMenuPage extends BasePage {
     }
 
     public boolean isCheckBtnSendCodeRecoveryPassword(){
-        return waitUtils.waitElementVisibilityWithMaximumWait(btnSendCodeRecoveryPassword).isEnabled();
+        return waitUtils.getElementWhenVisibleMaximumWait(btnSendCodeRecoveryPassword).isEnabled();
     }
 
     @Override

@@ -13,4 +13,8 @@ public class CategoryPage extends BasePage {
         return driver.getCurrentUrl();
     }
 
+    @Override
+    public void waitLoadComponent() {
+
+    }
 }

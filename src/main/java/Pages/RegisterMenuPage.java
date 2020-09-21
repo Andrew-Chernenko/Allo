@@ -39,7 +39,7 @@ public class RegisterMenuPage extends BasePage {
     }
 
     public boolean isCheckSuccesRegisterBtn(){
-        return waitUtils.waitElementVisibilityWithMaximumWait(succesRegisterBtn).isEnabled();
+        return waitUtils.getElementWhenVisibleMaximumWait(succesRegisterBtn).isEnabled();
     }
 
     @Override

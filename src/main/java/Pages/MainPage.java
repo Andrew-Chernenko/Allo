@@ -6,6 +6,7 @@ import BasePage.BasePage;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MainPage extends BasePage {
 
@@ -39,8 +40,11 @@ public class MainPage extends BasePage {
     @FindBy(xpath = ".//div[@class='header-theme']//div[@class='switcher-toggle']")
     private WebElement checkBoxThemeSwitch;
 
-    @FindBy(xpath = "//div[@class='banner__gradient']")
+    @FindBy(xpath = ".//div[@class='banner__gradient']")
     private WebElement slider;
+
+    @FindBy(xpath = ".//span[@class='language__ru active']")
+    private WebElement correctLanguage;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -48,7 +52,7 @@ public class MainPage extends BasePage {
     }
 
     public String takeCartValue() {
-        return waitUtils.waitElementVisibilityWithMinimumWait(cart).getText();
+        return waitUtils.getElementWhenVisibleMinimumWait(cart).getText();
     }
 
     public String getHeaderColor() {
@@ -60,7 +64,9 @@ public class MainPage extends BasePage {
 
     public void swapLanguageClick() {
         waitUtils.waitElementWithMiddleWaitAndClick(languageSwitch);
+        waitUtils.getElementWhenVisibleMiddleWait(correctLanguage);
         waitUtils.waitLoadingPageWithJavaScript();
+
     }
 
     public LoginMenuPage loginClickBtn() {

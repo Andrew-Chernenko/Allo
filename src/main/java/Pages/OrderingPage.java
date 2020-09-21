@@ -32,7 +32,7 @@ public class OrderingPage extends BasePage {
     }
 
     public boolean isCheckBtnCheckOut(){
-        return waitUtils.waitElementVisibilityWithMinimumWait(btnCheckOut).isEnabled();
+        return waitUtils.getElementWhenVisibleMiddleWait(btnCheckOut).isEnabled();
     }
 
     @Override

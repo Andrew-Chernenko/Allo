@@ -39,4 +39,9 @@ public class ProductListPage extends BasePage {
         List<WebElement> products = waitUtils.waitVisibilityAllElementsWithMiddleWait(productCart);
         return driver.getCurrentUrl();
     }
+
+    @Override
+    public void waitLoadComponent() {
+
+    }
 }
