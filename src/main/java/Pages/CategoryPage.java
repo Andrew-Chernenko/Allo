@@ -6,8 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class CategoryPage extends BasePage {
 
-    @FindBy(xpath = ".//div[@class='tiny-slider tiny-slider__content top-banner__slider']")
-    private WebElement topBanner;
+    @FindBy(xpath = ".//div[@class='portal__navigation']")
+    private WebElement navigationBar;
 
     public CategoryPage(WebDriver driver) {
         super(driver);
@@ -21,6 +21,6 @@ public class CategoryPage extends BasePage {
 
     @Override
     public void waitLoadComponent() {
-        waitUtils.waitElementVisibilityWithMiddleWait(topBanner);
+        waitUtils.waitElementVisibilityWithMiddleWait(navigationBar);
     }
 }
