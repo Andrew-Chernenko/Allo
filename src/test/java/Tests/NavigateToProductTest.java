@@ -19,7 +19,7 @@ public class NavigateToProductTest extends BaseTest {
     }
 
     @Test
-    public void moveToIphone() {
+    public void moveToTelephone() {
         MainPage page = new MainPage(driver);
         page.doSearch("Samsung");
         ProductListPage productListPage = new ProductListPage(driver);
