@@ -10,40 +10,40 @@ import java.util.List;
 public class MainPage extends BasePage {
 
     @FindBy(xpath = ".//div[contains(@class,'product-card v-loaded')]")
-    private List<WebElement> productCart;
+    public List<WebElement> productCart;
 
     @FindBy(xpath = ".//span[@class='shopping-cart__count']")
-    private WebElement cart;
+    public WebElement cart;
 
     @FindBy(xpath = ".//input[@id='search-form__input']")
-    private WebElement searchBox;
+    public WebElement searchBox;
 
     @FindBy(xpath = ".//div[@class='main-header-second-line-wrapper']")
-    private WebElement header;
+    public WebElement header;
 
     @FindBy(xpath = ".//div[@class='language']//div[@class='switcher-toggle']")
-    private WebElement languageSwitch;
+    public WebElement languageSwitch;
 
     @FindBy(xpath = ".//div[@class='user-block-authentication']//*[local-name()='svg']")
-    private WebElement loginBtn;
+    public WebElement loginBtn;
 
     @FindBy(xpath = ".//li[@class='login-tab']")
-    private WebElement btnRegister;
+    public WebElement btnRegister;
 
     @FindBy(xpath = ".//p[contains(text(),'Смартфоны и телефоны') or contains( text(), 'Смартфони та телефони')]")
-    private WebElement firstCategory;
+    public WebElement firstCategory;
 
     @FindBy(xpath = ".//p[contains(text(),'Бытовая техника') or contains( text(), 'Побутова техніка')]")
-    private WebElement secondCategory;
+    public WebElement secondCategory;
 
     @FindBy(xpath = ".//div[@class='header-theme']//div[@class='switcher-toggle']")
-    private WebElement checkBoxThemeSwitch;
+    public WebElement checkBoxThemeSwitch;
 
     @FindBy(xpath = ".//div[@class='banner__gradient']")
-    private WebElement slider;
+    public WebElement slider;
 
     @FindBy(xpath = ".//span[@class='language__ru active']")
-    private WebElement languageAfterSwap;
+    public WebElement languageAfterSwap;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -65,12 +65,6 @@ public class MainPage extends BasePage {
         waitUtils.waitElementWithMiddleWaitAndClick(languageSwitch);
         waitUtils.getElementWhenVisibleMiddleWait(languageAfterSwap);
         waitUtils.waitLoadingPageWithJavaScript();
-    }
-
-    public LoginMenuPage loginClickBtn() {
-        waitUtils.waitLoadingPageWithJavaScript();
-        waitUtils.waitElementWithMiddleWaitAndClick(loginBtn);
-        return new LoginMenuPage(driver);
     }
 
     public RegisterMenuPage registerBtnClick() {

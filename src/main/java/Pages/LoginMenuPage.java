@@ -8,39 +8,29 @@ import utils.EntityData.User;
 public class LoginMenuPage extends BasePage {
 
     @FindBy(xpath = ".//div[@id='customer-popup-menu']")
-    private WebElement loginMenu;
+    public WebElement loginMenu;
 
     @FindBy(xpath = ".//input[@id='auth']")
-    private WebElement fieldLogin;
+    public WebElement fieldLogin;
 
     @FindBy(xpath = ".//input[@id='v-login-password']")
-    private WebElement fieldPassword;
+    public WebElement fieldPassword;
 
     @FindBy(xpath = ".//button[@class='modal-submit-button']")
-    private WebElement btnSuccesLogin;
+    public WebElement btnSuccesLogin;
 
     @FindBy(xpath = ".//a[@class='forgot-password']")
-    private WebElement btnRecoveryPassword;
+    public WebElement btnRecoveryPassword;
 
     @FindBy(xpath = ".//input[@id='auth']")
-    private WebElement inputRecoveryPassword;
+    public WebElement inputRecoveryPassword;
 
     @FindBy(xpath = ".//button[@class='modal-submit-button']")
-    private WebElement btnSendCodeRecoveryPassword;
+    public WebElement btnSendCodeRecoveryPassword;
 
     public LoginMenuPage(WebDriver driver) {
         super(driver);
         waitLoadComponent();
-    }
-
-    public void setFieldLoginProcces(User user){
-        waitUtils.waitElementVisibilityWithMiddleWait(loginMenu);
-        typeTextUtils.sendText(fieldLogin,user.getEmail());
-        typeTextUtils.sendText(fieldPassword,user.getPassword());
-    }
-
-    public boolean isCheckSuccesRegisterBtn(){
-        return waitUtils.getElementWhenVisibleMaximumWait(btnSuccesLogin).isEnabled();
     }
 
     public void btnRecoveryPasswordClick() {
