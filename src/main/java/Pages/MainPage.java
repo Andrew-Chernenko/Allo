@@ -1,9 +1,7 @@
 package Pages;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import BasePage.BasePage;
-import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
@@ -48,50 +46,6 @@ public class MainPage extends BasePage {
     public MainPage(WebDriver driver) {
         super(driver);
         waitLoadComponent();
-    }
-
-    public String takeCartValue() {
-        return waitUtils.getElementWhenVisibleMinimumWait(cart).getText();
-    }
-
-    public String getHeaderColor() {
-        String headerColor;
-        waitUtils.waitElementVisibilityWithMiddleWait(header);
-        headerColor = header.getCssValue("background-color");
-        return Color.fromString(headerColor).asHex();
-    }
-
-    public void swapLanguageClick() {
-        waitUtils.waitElementWithMiddleWaitAndClick(languageSwitch);
-        waitUtils.getElementWhenVisibleMiddleWait(languageAfterSwap);
-        waitUtils.waitLoadingPageWithJavaScript();
-    }
-
-    public RegisterMenuPage registerBtnClick() {
-        waitUtils.waitElementWithMiddleWaitAndClick(loginBtn);
-        waitUtils.waitElementWithMiddleWaitAndClick(btnRegister);
-        return new RegisterMenuPage(driver);
-    }
-
-    public void firstCategoryClick() {
-        waitUtils.waitElementWithMiddleWaitAndClick(firstCategory);
-        waitUtils.waitLoadingPageWithJavaScript();
-    }
-
-    public void secondCategoryClick() {
-        waitUtils.waitElementWithMiddleWaitAndClick(secondCategory);
-        waitUtils.waitLoadingPageWithJavaScript();
-    }
-
-    public void checkBoxThemeSwitchClick() {
-        waitUtils.waitElementWithMiddleWaitAndClick(checkBoxThemeSwitch);
-        waitUtils.waitLoadingPageWithJavaScript();
-    }
-
-    public void doSearch(String text) {
-        waitUtils.waitElementWithMiddleWaitAndClick(searchBox);
-        typeTextUtils.sendText(searchBox,text);
-        typeTextUtils.pushKeys(searchBox,Keys.ENTER);
     }
 
     @Override

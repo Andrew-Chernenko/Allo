@@ -14,11 +14,6 @@ public class CategoryPage extends BasePage {
         waitLoadComponent();
     }
 
-    public String returnUrl(){
-        waitUtils.waitLoadingPageWithJavaScript();
-        return driver.getCurrentUrl();
-    }
-
     @Override
     public void waitLoadComponent() {
         waitUtils.waitElementVisibilityWithMiddleWait(navigationBar);

@@ -17,7 +17,7 @@ public class LoginMenuPage extends BasePage {
     public WebElement fieldPassword;
 
     @FindBy(xpath = ".//button[@class='modal-submit-button']")
-    public WebElement btnSuccesLogin;
+    public WebElement btnSuccessLogin;
 
     @FindBy(xpath = ".//a[@class='forgot-password']")
     public WebElement btnRecoveryPassword;
@@ -31,19 +31,6 @@ public class LoginMenuPage extends BasePage {
     public LoginMenuPage(WebDriver driver) {
         super(driver);
         waitLoadComponent();
-    }
-
-    public void btnRecoveryPasswordClick() {
-        waitUtils.waitElementVisibilityWithMiddleWait(btnRecoveryPassword);
-        waitUtils.waitElementWithMinimumWaitAndClick(btnRecoveryPassword);
-    }
-
-    public void setInputRecoveryPassword(User user) {
-        typeTextUtils.sendText(inputRecoveryPassword,user.getEmail());
-    }
-
-    public boolean isCheckBtnSendCodeRecoveryPassword(){
-        return waitUtils.getElementWhenVisibleMaximumWait(btnSendCodeRecoveryPassword).isEnabled();
     }
 
     @Override

@@ -7,14 +7,10 @@ import org.openqa.selenium.support.FindBy;
 public class ProductDescriptionPage extends BasePage {
 
     @FindBy(xpath = ".//h1[@class='product-header__title']")
-    private WebElement productName;
+    public WebElement productName;
 
     public ProductDescriptionPage(WebDriver driver){
         super(driver);
-    }
-
-    public boolean isContainsProductName(String text) {
-        return waitUtils.getElementWhenVisibleMiddleWait(productName).getText().contains(text);
     }
 
     @Override

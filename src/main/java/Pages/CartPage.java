@@ -7,22 +7,14 @@ import org.openqa.selenium.support.FindBy;
 public class CartPage extends BasePage {
 
     @FindBy(xpath = ".//button[@class='order-now']")
-    private WebElement btnOrdering;
+    public WebElement btnOrdering;
 
     @FindBy(xpath = ".//div[@class='cart-popup__body']")
-    private WebElement productCartPopUp;
+    public WebElement productCartPopUp;
 
     public CartPage(WebDriver driver) {
         super(driver);
         waitLoadComponent();
-    }
-
-    public void orderBtnClick() {
-        waitUtils.waitElementWithMiddleWaitAndClick(btnOrdering);
-    }
-
-    public void cartPopUpAppearing(){
-        waitUtils.waitElementVisibilityWithMiddleWait(productCartPopUp);
     }
 
     @Override
