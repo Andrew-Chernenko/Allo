@@ -2,7 +2,8 @@ Feature: Switch theme, language and category
 
   Scenario: Switch theme on the site
     Given Main page on the site
-    When We try click to the switch-box
+    When We take a header color
+    And We switched color
     Then Header change color to black
 
   Scenario: Switch language

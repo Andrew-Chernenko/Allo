@@ -1,4 +1,4 @@
-package Steps;
+package BaseStep;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
@@ -10,9 +10,13 @@ public class BaseStep {
         this.controller = controller;
     }
 
-    @Before
-    public void driverInittilizator() {
+    @Before(order = 1)
+    public void driverInitializator() {
         controller.setupController();
+    }
+
+    @Before(order = 2)
+    public void moveToSite(){
         controller.getDriver().navigate().to(link);
     }
 

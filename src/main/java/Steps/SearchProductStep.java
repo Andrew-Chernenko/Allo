@@ -1,4 +1,5 @@
 package Steps;
+import BaseStep.Controller;
 import Pages.MainPage;
 import Pages.ProductDescriptionPage;
 import Pages.ProductListPage;
@@ -41,7 +42,8 @@ public class SearchProductStep {
         typeTextUtils.pushKeys(mainPage.searchBox, Keys.ENTER);
     }
 
-    @Then("Page must contains {string}")
+
+    @Then("We click to the product with {string}")
     public void pageContains(String text) {
         waitUtils.waitLoadingPageWithJavaScript();
         productListPage = new ProductListPage(controller.getDriver());
@@ -52,6 +54,10 @@ public class SearchProductStep {
                 break;
             }
         }
+    }
+
+    @Then("Pages must contains {string}")
+    public void pages_must_contains(String text){
         productDescriptionPage = new ProductDescriptionPage(controller.getDriver());
         waitUtils.waitLoadingPageWithJavaScript();
         Assert.assertEquals(true, waitUtils.getElementWhenVisibleMiddleWait(productDescriptionPage.productName)

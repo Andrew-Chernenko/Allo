@@ -2,7 +2,8 @@ Feature: Search product on different language
   Scenario Outline: Navigate to product
     Given Initialization MainPage
     When We search some product <product>
-    Then Page must contains <text>
+    Then We click to the product with <text>
+    And Pages must contains <text>
     Examples:
       | product                     | text                 |
       |    "Холодильник"            |   "BCD-160MDMJ01"    |

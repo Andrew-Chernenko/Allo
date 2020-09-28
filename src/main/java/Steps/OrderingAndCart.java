@@ -1,4 +1,5 @@
 package Steps;
+import BaseStep.Controller;
 import Pages.CartPage;
 import Pages.MainPage;
 import Pages.OrderingPage;
@@ -12,7 +13,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import utils.TypeTextUtils;
 import utils.WaitUtils;
-
 import java.util.List;
 
 public class OrderingAndCart {
@@ -39,56 +39,80 @@ public class OrderingAndCart {
         oldCardValue = waitUtils.getElementWhenVisibleMinimumWait(mainPage.cart).getText();
     }
 
-    @When("^Search product and add to the cart")
-    public void addProductToCart() {
+    @When("Search product {string}")
+    public void addProductToCart(String text) {
         waitUtils.waitElementWithMiddleWaitAndClick(mainPage.searchBox);
-        typeTextUtils.sendText(mainPage.searchBox, "Samsung");
+        typeTextUtils.sendText(mainPage.searchBox, text);
         typeTextUtils.pushKeys(mainPage.searchBox, Keys.ENTER);
         waitUtils.waitLoadingPageWithJavaScript();
+    }
+
+    @When("Add product to cart with model {string}")
+    public void add_product_to_cart(String model){
         productListPage = new ProductListPage(controller.getDriver());
         List<WebElement> products = waitUtils.waitVisibilityAllElementsWithMiddleWait(productListPage.productCart);
         for (WebElement webElement : products) {
-            if (webElement.getText().contains("SM-N985FZNGSEK")) {
+            if (webElement.getText().contains(model)) {
                 webElement.findElement(By.xpath(".//button[contains(@class,'buy-button--animation')]")).click();
                 break;
             }
         }
-        cartPage = new CartPage(controller.getDriver());
-        waitUtils.waitElementVisibilityWithMiddleWait(cartPage.productCartPopUp);
     }
 
     @Then("^Сhanging the counter of items in the cart")
     public void checkChange() {
-        String newCardValue = waitUtils.getElementWhenVisibleMinimumWait(mainPage.cart).getText();
-        Assert.assertNotEquals(oldCardValue, newCardValue);
+        cartPage = new CartPage(controller.getDriver());
+        waitUtils.waitElementVisibilityWithMiddleWait(cartPage.productCartPopUp);
+        Assert.assertNotEquals(oldCardValue, waitUtils.getElementWhenVisibleMinimumWait(mainPage.cart).getText());
     }
 
     @Given("^Open site and init page")
     public void openAdnInitPage() {
         waitUtils.waitLoadingPageWithJavaScript();
         mainPage = new MainPage(controller.getDriver());
+    }
+
+    @When("Search {string}")
+    public void search(String text){
         waitUtils.waitElementWithMiddleWaitAndClick(mainPage.searchBox);
         typeTextUtils.sendText(mainPage.searchBox, "Айфон");
         typeTextUtils.pushKeys(mainPage.searchBox, Keys.ENTER);
         waitUtils.waitLoadingPageWithJavaScript();
     }
 
-    @When("Add product to the cart and ordering set {string} and {string} and {string}")
-    public void Ordering(String name, String phoneNumber, String email) {
+    @When("Add product to the cart with model {string}")
+    public void Ordering(String model) {
         productListPage = new ProductListPage(controller.getDriver());
         List<WebElement> products = waitUtils.waitVisibilityAllElementsWithMiddleWait(productListPage.productCart);
         for (WebElement webElement : products) {
-            if (webElement.getText().contains("MWM02")) {
+            if (webElement.getText().contains(model)) {
                 webElement.findElement(By.xpath(".//button[contains(@class,'buy-button--animation')]")).click();
                 break;
             }
         }
+    }
+
+    @When("^Wait ordering pup-up")
+    public void wait_ordering_pup_up(){
         cartPage = new CartPage(controller.getDriver());
         waitUtils.waitElementWithMiddleWaitAndClick(cartPage.btnOrdering);
         waitUtils.waitLoadingPageWithJavaScript();
+    }
+
+    @When("Ordering set name {string}")
+    public void ordering_set_name(String name){
         orderingPage = new OrderingPage(controller.getDriver());
+        System.out.println(name);
         typeTextUtils.sendText(orderingPage.fieldName, name);
+    }
+
+    @When("Ordering set phoneNumber {string}")
+    public void ordering_set_phoneNumber(String phoneNumber){
         typeTextUtils.sendText(orderingPage.fieldTelephone, phoneNumber);
+    }
+
+    @When("Ordering set email {string}")
+    public void ordering_set_email(String email){
         typeTextUtils.sendText(orderingPage.fieldEmail, email);
     }
 

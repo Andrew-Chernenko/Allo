@@ -1,4 +1,5 @@
 package Steps;
+import BaseStep.Controller;
 import Pages.LoginMenuPage;
 import Pages.MainPage;
 import Pages.RegisterMenuPage;
@@ -26,20 +27,23 @@ public class UserAuthenticationStep {
         typeTextUtils = new TypeTextUtils(controller.getDriver());
     }
 
-    @Given("^Login and password")
+    @Given("^Set login and password")
     public void setLoginData() {
         user = new User();
         user.setEmail("test123@gmail.com");
         user.setPassword("qwerty12345");
     }
 
-    @When("^We try to login with this data")
-    public void login() {
+    @When("^We wait a login pop-up")
+    public void We_wait_a_login_pop_up() {
         mainPage = new MainPage(controller.getDriver());
-        waitUtils.waitLoadingPageWithJavaScript();
         waitUtils.waitElementWithMiddleWaitAndClick(mainPage.loginBtn);
         loginMenuPage = new LoginMenuPage(controller.getDriver());
         waitUtils.waitElementVisibilityWithMiddleWait(loginMenuPage.loginMenu);
+    }
+
+    @When("^We try login with this data")
+    public void login(){
         typeTextUtils.sendText(loginMenuPage.fieldLogin, user.getEmail());
         typeTextUtils.sendText(loginMenuPage.fieldPassword, user.getPassword());
     }
@@ -55,14 +59,16 @@ public class UserAuthenticationStep {
         user.setEmail("test@gmail.com");
     }
 
-    @When("^We click button for recovery password, input email")
+    @When("^We click button for recovery password")
     public void passwordRecovery() {
         mainPage = new MainPage(controller.getDriver());
-        waitUtils.waitLoadingPageWithJavaScript();
         waitUtils.waitElementWithMiddleWaitAndClick(mainPage.loginBtn);
         loginMenuPage = new LoginMenuPage(controller.getDriver());
         waitUtils.waitElementVisibilityWithMiddleWait(loginMenuPage.btnRecoveryPassword);
-        waitUtils.waitElementWithMinimumWaitAndClick(loginMenuPage.btnRecoveryPassword);
+    }
+
+    @When("^We send email for recovery password")
+    public void we_send_email_for_recovery_password(){
         typeTextUtils.sendText(loginMenuPage.inputRecoveryPassword, user.getEmail());
     }
 
@@ -71,7 +77,7 @@ public class UserAuthenticationStep {
         Assert.assertTrue(waitUtils.getElementWhenVisibleMaximumWait(loginMenuPage.btnSendCodeRecoveryPassword).isEnabled());
     }
 
-    @Given("^Name,Phone number, Email and Password")
+    @Given("^Set Name,Phone number, Email and Password")
     public void setRegistrationData() {
         user = new User();
         user.setName("Андрей");
@@ -80,15 +86,22 @@ public class UserAuthenticationStep {
         user.setPassword("qwerty12345");
     }
 
-    @When("^We try to register new account with this data")
+    @When("^We click to register button")
     public void registration() {
         mainPage = new MainPage(controller.getDriver());
-        waitUtils.waitLoadingPageWithJavaScript();
         waitUtils.waitElementWithMiddleWaitAndClick(mainPage.loginBtn);
         loginMenuPage = new LoginMenuPage(controller.getDriver());
         waitUtils.waitElementWithMiddleWaitAndClick(mainPage.btnRegister);
+    }
+
+    @When("^We wait a register pop-up")
+    public void we_wait_a_register_pop_up(){
         registerMenuPage = new RegisterMenuPage(controller.getDriver());
         waitUtils.waitElementVisibilityWithMiddleWait(registerMenuPage.registerMenu);
+    }
+
+    @When("^We try to register new account with this data")
+    public void we_try_to_register_new_account_with_this_data(){
         typeTextUtils.sendText(registerMenuPage.inputRegisterName, user.getName());
         typeTextUtils.sendText(registerMenuPage.inputRegisterPhone, user.getPhone());
         typeTextUtils.sendText(registerMenuPage.inputRegisterEmail, user.getEmail());

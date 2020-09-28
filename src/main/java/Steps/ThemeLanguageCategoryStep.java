@@ -1,4 +1,6 @@
 package Steps;
+import BaseStep.BaseStep;
+import BaseStep.Controller;
 import Pages.CategoryPage;
 import Pages.MainPage;
 import io.cucumber.java.en.Given;
@@ -28,11 +30,15 @@ public class ThemeLanguageCategoryStep {
         mainPage = new MainPage(controller.getDriver());
     }
 
-    @When("^We try click to the switch-box")
+    @When("^We take a header color")
     public void switchTheme() {
         waitUtils.waitElementVisibilityWithMiddleWait(mainPage.header);
         headerColor = mainPage.header.getCssValue("background-color");
         headerColor = Color.fromString(headerColor).asHex();
+    }
+
+    @When("^We switched color")
+    public void we_switched_color(){
         waitUtils.waitElementWithMiddleWaitAndClick(mainPage.checkBoxThemeSwitch);
         waitUtils.waitLoadingPageWithJavaScript();
     }
