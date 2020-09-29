@@ -1,14 +1,11 @@
 package Pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import BasePage.BasePage;
+import Pages.BasePage.BasePage;
 import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class MainPage extends BasePage {
-
-    @FindBy(xpath = ".//div[contains(@class,'product-card v-loaded')]")
-    public List<WebElement> productCart;
 
     @FindBy(xpath = ".//span[@class='shopping-cart__count']")
     public WebElement cart;
@@ -24,9 +21,6 @@ public class MainPage extends BasePage {
 
     @FindBy(xpath = ".//div[@class='user-block-authentication']//*[local-name()='svg']")
     public WebElement loginBtn;
-
-    @FindBy(xpath = ".//li[@class='login-tab']")
-    public WebElement btnRegister;
 
     @FindBy(xpath = ".//p[contains(text(),'Смартфоны и телефоны') or contains( text(), 'Смартфони та телефони')]")
     public WebElement firstCategory;

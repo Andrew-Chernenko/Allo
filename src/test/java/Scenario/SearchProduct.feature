@@ -1,7 +1,7 @@
 Feature: Search product on different language
   Scenario Outline: Navigate to product
-    Given Initialization MainPage
-    When We search some product <product>
+    Given We open site and init page
+    When We search product <product>
     Then We click to the product with <text>
     And Pages must contains <text>
     Examples:
@@ -10,7 +10,7 @@ Feature: Search product on different language
       |    "Samsung"                |   "SM-N985FZNGSEK"   |
 
   Scenario Outline: Search product
-    Given Open main page
+    Given We open site and init page
     When We search product <product>
     Then We will be on this <currentUrl>
     Examples:

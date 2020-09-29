@@ -1,9 +1,8 @@
 package Pages;
-import BasePage.BasePage;
+import Pages.BasePage.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.EntityData.User;
 
 public class LoginMenuPage extends BasePage {
 
@@ -27,6 +26,9 @@ public class LoginMenuPage extends BasePage {
 
     @FindBy(xpath = ".//button[@class='modal-submit-button']")
     public WebElement btnSendCodeRecoveryPassword;
+
+    @FindBy(xpath = ".//li[@class='login-tab']")
+    public WebElement btnRegister;
 
     public LoginMenuPage(WebDriver driver) {
         super(driver);
