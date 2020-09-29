@@ -4,7 +4,6 @@ import Steps.BaseStep.Controller;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-import utils.EntityData.User;
 import utils.TypeTextUtils;
 import utils.WaitUtils;
 
@@ -13,7 +12,6 @@ public class RegistrationStep {
     protected WaitUtils waitUtils;
     protected TypeTextUtils typeTextUtils;
     protected Controller controller;
-    protected User user;
     protected RegisterMenuPage registerMenuPage;
 
     public RegistrationStep(Controller controller){
@@ -22,27 +20,30 @@ public class RegistrationStep {
         typeTextUtils = new TypeTextUtils(controller.getDriver());
     }
 
-    @When("^We set Name,Phone number, Email and Password")
-    public void setRegistrationData() {
-        user = new User();
-        user.setName("Андрей");
-        user.setPhone("956765444");
-        user.setEmail("test12345612355@gmail.com");
-        user.setPassword("qwerty12345");
+    @When("We set name {string}")
+    public void setRegistrationData(String name) {
+        typeTextUtils.sendText(registerMenuPage.inputRegisterName, name);
+    }
+
+    @When("We set phone number {string}")
+    public void we_set_phone_number(String phoneNumber){
+        typeTextUtils.sendText(registerMenuPage.inputRegisterPhone, phoneNumber);
+    }
+
+    @When("We set email {string}")
+    public void we_set_email(String email){
+        typeTextUtils.sendText(registerMenuPage.inputRegisterEmail, email);
+    }
+
+    @When("We set password {string}")
+    public void we_set_password(String password){
+        typeTextUtils.sendText(registerMenuPage.inputRegisterPassword, password);
     }
 
     @When("^We wait a register pop-up")
     public void we_wait_a_register_pop_up(){
         registerMenuPage = new RegisterMenuPage(controller.getDriver());
         waitUtils.waitElementVisibilityWithMiddleWait(registerMenuPage.registerMenu);
-    }
-
-    @When("^We try to register new account with this data")
-    public void we_try_to_register_new_account_with_this_data(){
-        typeTextUtils.sendText(registerMenuPage.inputRegisterName, user.getName());
-        typeTextUtils.sendText(registerMenuPage.inputRegisterPhone, user.getPhone());
-        typeTextUtils.sendText(registerMenuPage.inputRegisterEmail, user.getEmail());
-        typeTextUtils.sendText(registerMenuPage.inputRegisterPassword, user.getPassword());
     }
 
     @Then("^Button registration should be enabled")

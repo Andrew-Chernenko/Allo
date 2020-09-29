@@ -26,7 +26,6 @@ public class CartStep {
 
     @Given("^We take cart value")
     public void we_take_cart_value() {
-        waitUtils.waitLoadingPageWithJavaScript();
         mainPage = new MainPage(controller.getDriver());
         oldCardValue = waitUtils.getElementWhenVisibleMinimumWait(mainPage.cart).getText();
     }

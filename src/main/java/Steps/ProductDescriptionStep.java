@@ -18,8 +18,8 @@ public class ProductDescriptionStep {
 
     @Then("Pages must contains {string}")
     public void pages_must_contains(String text){
-        productDescriptionPage = new ProductDescriptionPage(controller.getDriver());
         waitUtils.waitLoadingPageWithJavaScript();
+        productDescriptionPage = new ProductDescriptionPage(controller.getDriver());
         Assert.assertEquals(true, waitUtils.getElementWhenVisibleMiddleWait(productDescriptionPage.productName)
                 .getText().contains(text));
     }

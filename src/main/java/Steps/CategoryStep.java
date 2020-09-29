@@ -18,7 +18,6 @@ public class CategoryStep {
 
     @Then("We will be on this url {string}")
     public void we_will_be_on_this_url(String currentUrl) {
-        waitUtils.waitLoadingPageWithJavaScript();
         categoryPage = new CategoryPage(controller.getDriver());
         Assert.assertEquals(controller.getDriver().getCurrentUrl(), currentUrl);
     }

@@ -10,7 +10,7 @@ public class LoginMenuPage extends BasePage {
     public WebElement loginMenu;
 
     @FindBy(xpath = ".//input[@id='auth']")
-    public WebElement fieldLogin;
+    public WebElement fieldEmail;
 
     @FindBy(xpath = ".//input[@id='v-login-password']")
     public WebElement fieldPassword;
@@ -20,9 +20,6 @@ public class LoginMenuPage extends BasePage {
 
     @FindBy(xpath = ".//a[@class='forgot-password']")
     public WebElement btnRecoveryPassword;
-
-    @FindBy(xpath = ".//input[@id='auth']")
-    public WebElement inputRecoveryPassword;
 
     @FindBy(xpath = ".//button[@class='modal-submit-button']")
     public WebElement btnSendCodeRecoveryPassword;
