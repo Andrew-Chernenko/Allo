@@ -4,7 +4,7 @@ Feature: Ordering and check add product to the cart
     Given We open site and init page
     When We take cart value
     And We search product "Samsung"
-    And We add model "SM-N985FZNGSEK" to cart
+    And We add model "SM-G780FLVDSEK" to cart
     Then We see changing the counter of items in the cart
 
     Scenario Outline: Ordering

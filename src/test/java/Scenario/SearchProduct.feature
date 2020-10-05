@@ -6,8 +6,8 @@ Feature: Search product on different language
     And Pages must contains <text>
     Examples:
       | product                     | text                 |
-      |    "Холодильник"            |   "BCD-160MDMJ01"    |
-      |    "Samsung"                |   "SM-N985FZNGSEK"   |
+      |    "Холодильник"            |   "SJ-BB10IMXL1-UA"  |
+      |    "Samsung"                |   "SM-G780FLVDSEK"   |
 
   Scenario Outline: Search product
     Given We open site and init page
