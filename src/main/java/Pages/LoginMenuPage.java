@@ -1,59 +1,35 @@
 package Pages;
-import BasePage.BasePage;
+import Pages.BasePage.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.EntityData.User;
 
 public class LoginMenuPage extends BasePage {
 
     @FindBy(xpath = ".//div[@id='customer-popup-menu']")
-    private WebElement loginMenu;
+    public WebElement loginMenu;
 
     @FindBy(xpath = ".//input[@id='auth']")
-    private WebElement fieldLogin;
+    public WebElement fieldEmail;
 
     @FindBy(xpath = ".//input[@id='v-login-password']")
-    private WebElement fieldPassword;
+    public WebElement fieldPassword;
 
     @FindBy(xpath = ".//button[@class='modal-submit-button']")
-    private WebElement btnSuccesLogin;
+    public WebElement btnSuccessLogin;
 
     @FindBy(xpath = ".//a[@class='forgot-password']")
-    private WebElement btnRecoveryPassword;
-
-    @FindBy(xpath = ".//input[@id='auth']")
-    private WebElement inputRecoveryPassword;
+    public WebElement btnRecoveryPassword;
 
     @FindBy(xpath = ".//button[@class='modal-submit-button']")
-    private WebElement btnSendCodeRecoveryPassword;
+    public WebElement btnSendCodeRecoveryPassword;
+
+    @FindBy(xpath = ".//li[@class='login-tab']")
+    public WebElement btnRegister;
 
     public LoginMenuPage(WebDriver driver) {
         super(driver);
         waitLoadComponent();
-    }
-
-    public void setFieldLoginProcces(User user){
-        waitUtils.waitElementVisibilityWithMiddleWait(loginMenu);
-        typeTextUtils.sendText(fieldLogin,user.getEmail());
-        typeTextUtils.sendText(fieldPassword,user.getPassword());
-    }
-
-    public boolean isCheckSuccesRegisterBtn(){
-        return waitUtils.getElementWhenVisibleMaximumWait(btnSuccesLogin).isEnabled();
-    }
-
-    public void btnRecoveryPasswordClick() {
-        waitUtils.waitElementVisibilityWithMiddleWait(btnRecoveryPassword);
-        waitUtils.waitElementWithMinimumWaitAndClick(btnRecoveryPassword);
-    }
-
-    public void setInputRecoveryPassword(User user) {
-        typeTextUtils.sendText(inputRecoveryPassword,user.getEmail());
-    }
-
-    public boolean isCheckBtnSendCodeRecoveryPassword(){
-        return waitUtils.getElementWhenVisibleMaximumWait(btnSendCodeRecoveryPassword).isEnabled();
     }
 
     @Override

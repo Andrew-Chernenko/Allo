@@ -1,5 +1,5 @@
 package Pages;
-import BasePage.BasePage;
+import Pages.BasePage.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,11 +12,6 @@ public class CategoryPage extends BasePage {
     public CategoryPage(WebDriver driver) {
         super(driver);
         waitLoadComponent();
-    }
-
-    public String returnUrl(){
-        waitUtils.waitLoadingPageWithJavaScript();
-        return driver.getCurrentUrl();
     }
 
     @Override

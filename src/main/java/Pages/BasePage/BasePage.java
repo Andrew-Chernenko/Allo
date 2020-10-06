@@ -1,4 +1,4 @@
-package BasePage;
+package Pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import utils.WaitUtils;
