@@ -22,21 +22,25 @@ public class RegistrationStep {
 
     @When("We set name {string}")
     public void setRegistrationData(String name) {
+        registerMenuPage = new RegisterMenuPage(controller.getDriver());
         typeTextUtils.sendText(registerMenuPage.inputRegisterName, name);
     }
 
     @When("We set phone number {string}")
     public void we_set_phone_number(String phoneNumber){
+        registerMenuPage = new RegisterMenuPage(controller.getDriver());
         typeTextUtils.sendText(registerMenuPage.inputRegisterPhone, phoneNumber);
     }
 
     @When("We set email {string}")
     public void we_set_email(String email){
+        registerMenuPage = new RegisterMenuPage(controller.getDriver());
         typeTextUtils.sendText(registerMenuPage.inputRegisterEmail, email);
     }
 
     @When("We set password {string}")
     public void we_set_password(String password){
+        registerMenuPage = new RegisterMenuPage(controller.getDriver());
         typeTextUtils.sendText(registerMenuPage.inputRegisterPassword, password);
     }
 
@@ -48,6 +52,7 @@ public class RegistrationStep {
 
     @Then("^Button registration should be enabled")
     public void button_registration_should_be_enabled() {
+        registerMenuPage = new RegisterMenuPage(controller.getDriver());
         Assert.assertTrue(waitUtils.getElementWhenVisibleMaximumWait(registerMenuPage.succesRegisterBtn).isEnabled());
     }
 

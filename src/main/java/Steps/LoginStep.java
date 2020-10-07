@@ -28,16 +28,19 @@ public class LoginStep {
 
     @When("We set registered Email {string}")
     public void we_set_registered_email(String email) {
+        loginMenuPage = new LoginMenuPage(controller.getDriver());
         typeTextUtils.sendText(loginMenuPage.fieldEmail, email);
     }
 
     @When("We set registered Password {string}")
     public void we_set_registered_password(String password){
+        loginMenuPage = new LoginMenuPage(controller.getDriver());
         typeTextUtils.sendText(loginMenuPage.fieldPassword, password);
     }
 
     @Then("^Button login should be enabled")
     public void button_login_should_be_enabled() {
+        loginMenuPage = new LoginMenuPage(controller.getDriver());
         Assert.assertTrue(waitUtils.getElementWhenVisibleMaximumWait(loginMenuPage.btnSuccessLogin).isEnabled());
     }
 
@@ -49,6 +52,7 @@ public class LoginStep {
 
     @Then("^Button send message should be enabled")
     public void button_send_message_should_be_enabled() {
+        loginMenuPage = new LoginMenuPage(controller.getDriver());
         Assert.assertTrue(waitUtils.getElementWhenVisibleMaximumWait(loginMenuPage.btnSendCodeRecoveryPassword).isEnabled());
     }
 
