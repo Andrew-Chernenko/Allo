@@ -75,7 +75,6 @@ public class MainPageStep {
 
     @Then("^We navigate to new url")
     public void we_navigate_to_new_url() {
-        mainPage = new MainPage(controller.getDriver());
         Assert.assertNotEquals(controller.getDriver().getCurrentUrl(), BaseStep.link);
     }
 
